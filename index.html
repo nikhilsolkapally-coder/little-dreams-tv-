@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f5ff">
+  <meta name="description" content="Little Dreams TV — a happy place for little minds to learn, play, sing, and grow.">
+  <title>Little Dreams TV | Learn · Play · Sing · Grow</title>
+  <style>
+    :root { color-scheme: light; --ink:#28345b; --muted:#626b86; --purple:#7256d8; --pink:#ff8eac; --yellow:#ffd56c; --mint:#b9f0df; --paper:#fff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:radial-gradient(circle at 8% 6%,#fff0f5 0,transparent 25rem),radial-gradient(circle at 94% 18%,#e5f8ff 0,transparent 26rem),#fbfaff; font-family:ui-rounded,"Trebuchet MS",system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.6; }
+    a { color:inherit; }
+    .wrap { width:min(1100px,calc(100% - 40px)); margin:auto; }
+    header { padding:24px 0; }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { display:flex; align-items:center; gap:11px; text-decoration:none; font-weight:850; letter-spacing:-.04em; font-size:1.2rem; }
+    .brand-mark { display:grid; place-items:center; width:43px; height:43px; border-radius:15px; background:linear-gradient(145deg,#ffd86e,#ff9db5); font-size:1.35rem; box-shadow:0 8px 18px #ed9bad38; }
+    .nav-link { text-decoration:none; font-weight:750; color:var(--purple); padding:10px 16px; border-radius:999px; background:#fff; box-shadow:0 5px 20px #5541a012; }
+    .hero { display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:40px; padding:48px 0 78px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; color:#7256b9; background:#f0eaff; padding:8px 14px; border-radius:999px; font-size:.86rem; font-weight:800; }
+    h1 { max-width:650px; margin:20px 0 16px; font-size:clamp(2.8rem,6vw,5.2rem); line-height:1.02; letter-spacing:-.065em; }
+    h1 span { color:var(--purple); }
+    .intro { max-width:520px; color:var(--muted); font-size:1.15rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:12px 20px; border-radius:15px; text-decoration:none; font-weight:850; transition:transform .18s ease,box-shadow .18s ease; }
+    .button:hover { transform:translateY(-2px); }
+    .primary { color:white; background:var(--purple); box-shadow:0 9px 20px #7256d833; }
+    .secondary { background:white; color:var(--ink); box-shadow:0 7px 22px #5541a012; }
+    .scene { position:relative; min-height:380px; display:grid; place-items:center; isolation:isolate; }
+    .sun { position:absolute; top:10px; right:11%; width:92px; height:92px; display:grid; place-items:center; border-radius:50%; background:var(--yellow); font-size:2.6rem; box-shadow:0 10px 35px #f6c84c40; }
+    .cloud { position:absolute; top:62px; left:6%; font-size:3.3rem; filter:drop-shadow(0 7px 8px #6988b315); }
+    .rainbow { position:absolute; bottom:25px; left:0; right:0; height:230px; overflow:hidden; z-index:-1; }
+    .rainbow:before,.rainbow:after { content:""; position:absolute; left:50%; transform:translateX(-50%); border-radius:50% 50% 0 0; }
+    .rainbow:before { width:430px; height:430px; bottom:-260px; background:conic-gradient(from 270deg at 50% 100%,#ff9db5 0 30deg,#ffd56c 30deg 58deg,#b9f0df 58deg 86deg,#a9c9ff 86deg 114deg,#d3b8ff 114deg 145deg,transparent 145deg 215deg,#ff9db5 215deg 245deg,#ffd56c 245deg 273deg,#b9f0df 273deg 301deg,#a9c9ff 301deg 329deg,#d3b8ff 329deg 360deg); }
+    .rainbow:after { width:300px; height:300px; bottom:-208px; background:#fbfaff; }
+    .dream-card { width:min(310px,76%); min-height:235px; display:grid; place-items:center; text-align:center; padding:28px; border:5px solid #fff; border-radius:34px; background:linear-gradient(145deg,#fff,#fff8fc); box-shadow:0 24px 55px #655c9822; transform:rotate(-3deg); }
+    .book { font-size:5.4rem; line-height:1; filter:drop-shadow(0 9px 7px #9078c626); }
+    .dream-card p { margin:14px 0 0; color:#7256b9; font-weight:850; }
+    .spark { position:absolute; color:#f5b934; font-size:1.7rem; }
+    .spark.one { top:39%; left:9%; }.spark.two { right:10%; bottom:28%; color:#ef88a8; font-size:1.35rem; }
+    .section { padding:54px 0 70px; }
+    .section-head { max-width:650px; margin:0 auto 30px; text-align:center; }
+    .section-head h2,.about h2 { margin:0 0 10px; font-size:clamp(2rem,4vw,3rem); line-height:1.12; letter-spacing:-.05em; }
+    .section-head p,.about p { margin:0; color:var(--muted); }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .card { min-height:220px; padding:25px; border-radius:25px; background:#fff; box-shadow:0 12px 35px #51458f10; border:1px solid #eeeafa; }
+    .icon { width:54px; height:54px; display:grid; place-items:center; margin-bottom:16px; border-radius:18px; font-size:1.75rem; background:#fff0f4; }
+    .card:nth-child(2) .icon { background:#fff6db; }.card:nth-child(3) .icon { background:#e8faf4; }
+    .card h3 { margin:0 0 7px; font-size:1.18rem; }.card p { margin:0; color:var(--muted); }
+    .about { display:grid; grid-template-columns:.75fr 1.25fr; gap:30px; align-items:center; margin:8px 0 74px; padding:35px; border-radius:30px; background:linear-gradient(120deg,#f0eaff,#fff0f5 70%,#fff8df); }
+    .about-art { display:grid; place-items:center; min-height:150px; font-size:5rem; }
+    .about p { max-width:650px; }
+    footer { padding:22px 0 34px; text-align:center; color:var(--muted); font-size:.92rem; }
+    :focus-visible { outline:3px solid #5139b7; outline-offset:4px; }
+    @media (max-width:760px) { .hero { grid-template-columns:1fr; gap:8px; padding:35px 0 42px; }.scene { min-height:330px; }.cards { grid-template-columns:1fr; }.card { min-height:0; }.about { grid-template-columns:1fr; gap:8px; padding:26px; }.about-art { min-height:100px; font-size:4rem; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; }.button { transition:none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">🌈</span><span>Little Dreams TV</span></a>
+      <a class="nav-link" href="#explore">Explore the fun <span aria-hidden="true">→</span></a>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div>
+        <span class="eyebrow"><span aria-hidden="true">✨</span> Learn · Play · Sing · Grow</span>
+        <h1 id="hero-title">Little dreams.<br><span>Big adventures.</span></h1>
+        <p class="intro">A happy place for curious little minds. Sing along, discover new ideas, and let your imagination go wherever it dreams.</p>
+        <div class="actions"><a class="button primary" href="#explore">Come explore <span aria-hidden="true">&nbsp;→</span></a><a class="button secondary" href="#about">Meet Little Dreams TV</a></div>
+      </div>
+      <div class="scene" aria-hidden="true"><span class="sun">☀️</span><span class="cloud">☁️</span><span class="spark one">✦</span><span class="spark two">✦</span><div class="rainbow"></div><div class="dream-card"><div class="book">📚</div><p>Make room for wonder!</p></div></div>
+    </section>
+    <section class="section wrap" id="explore" aria-labelledby="explore-title">
+      <div class="section-head"><span class="eyebrow">A world of wonder</span><h2 id="explore-title">There’s something fun around every corner</h2><p>Big smiles, bright ideas, and joyful moments made for growing minds.</p></div>
+      <div class="cards">
+        <article class="card"><div class="icon" aria-hidden="true">🎵</div><h3>Sing &amp; move</h3><p>Clap, dance, and learn through cheerful songs and playful rhythms.</p></article>
+        <article class="card"><div class="icon" aria-hidden="true">📖</div><h3>Stories &amp; imagination</h3><p>Open a storybook and journey into magical worlds full of possibility.</p></article>
+        <article class="card"><div class="icon" aria-hidden="true">🌱</div><h3>Learn &amp; explore</h3><p>Discover letters, numbers, colors, and the little things all around us.</p></article>
+      </div>
+    </section>
+    <section class="about wrap" id="about" aria-labelledby="about-title"><div class="about-art" aria-hidden="true">🌟</div><div><h2 id="about-title">Growing one curious moment at a time</h2><p>Little Dreams TV brings learning and play together in a bright, welcoming world. Every little question can lead to a wonderful new adventure.</p></div></section>
+  </main>
+  <footer><div class="wrap">Made for little dreamers everywhere <span aria-hidden="true">💛</span></div></footer>
+</body>
+</html>
