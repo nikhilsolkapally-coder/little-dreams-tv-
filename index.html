@@ -1,90 +1,250 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f5ff">
-  <meta name="description" content="Little Dreams TV — a happy place for little minds to learn, play, sing, and grow.">
-  <title>Little Dreams TV | Learn · Play · Sing · Grow</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff8e9">
+  <meta name="description" content="Little Dreams TV is a happy place for little learners to enjoy ABCs, nursery rhymes, stories, numbers, colors and more.">
+  <title>Little Dreams TV | Learn • Play • Sing • Grow</title>
   <style>
-    :root { color-scheme: light; --ink:#28345b; --muted:#626b86; --purple:#7256d8; --pink:#ff8eac; --yellow:#ffd56c; --mint:#b9f0df; --paper:#fff; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; color:var(--ink); background:radial-gradient(circle at 8% 6%,#fff0f5 0,transparent 25rem),radial-gradient(circle at 94% 18%,#e5f8ff 0,transparent 26rem),#fbfaff; font-family:ui-rounded,"Trebuchet MS",system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.6; }
-    a { color:inherit; }
-    .wrap { width:min(1100px,calc(100% - 40px)); margin:auto; }
-    header { padding:24px 0; }
-    .nav { display:flex; align-items:center; justify-content:space-between; gap:20px; }
-    .brand { display:flex; align-items:center; gap:11px; text-decoration:none; font-weight:850; letter-spacing:-.04em; font-size:1.2rem; }
-    .brand-mark { display:grid; place-items:center; width:43px; height:43px; border-radius:15px; background:linear-gradient(145deg,#ffd86e,#ff9db5); font-size:1.35rem; box-shadow:0 8px 18px #ed9bad38; }
-    .nav-link { text-decoration:none; font-weight:750; color:var(--purple); padding:10px 16px; border-radius:999px; background:#fff; box-shadow:0 5px 20px #5541a012; }
-    .hero { display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:40px; padding:48px 0 78px; }
-    .eyebrow { display:inline-flex; align-items:center; gap:8px; color:#7256b9; background:#f0eaff; padding:8px 14px; border-radius:999px; font-size:.86rem; font-weight:800; }
-    h1 { max-width:650px; margin:20px 0 16px; font-size:clamp(2.8rem,6vw,5.2rem); line-height:1.02; letter-spacing:-.065em; }
-    h1 span { color:var(--purple); }
-    .intro { max-width:520px; color:var(--muted); font-size:1.15rem; }
-    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
-    .button { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:12px 20px; border-radius:15px; text-decoration:none; font-weight:850; transition:transform .18s ease,box-shadow .18s ease; }
-    .button:hover { transform:translateY(-2px); }
-    .primary { color:white; background:var(--purple); box-shadow:0 9px 20px #7256d833; }
-    .secondary { background:white; color:var(--ink); box-shadow:0 7px 22px #5541a012; }
-    .scene { position:relative; min-height:380px; display:grid; place-items:center; isolation:isolate; }
-    .sun { position:absolute; top:10px; right:11%; width:92px; height:92px; display:grid; place-items:center; border-radius:50%; background:var(--yellow); font-size:2.6rem; box-shadow:0 10px 35px #f6c84c40; }
-    .cloud { position:absolute; top:62px; left:6%; font-size:3.3rem; filter:drop-shadow(0 7px 8px #6988b315); }
-    .rainbow { position:absolute; bottom:25px; left:0; right:0; height:230px; overflow:hidden; z-index:-1; }
-    .rainbow:before,.rainbow:after { content:""; position:absolute; left:50%; transform:translateX(-50%); border-radius:50% 50% 0 0; }
-    .rainbow:before { width:430px; height:430px; bottom:-260px; background:conic-gradient(from 270deg at 50% 100%,#ff9db5 0 30deg,#ffd56c 30deg 58deg,#b9f0df 58deg 86deg,#a9c9ff 86deg 114deg,#d3b8ff 114deg 145deg,transparent 145deg 215deg,#ff9db5 215deg 245deg,#ffd56c 245deg 273deg,#b9f0df 273deg 301deg,#a9c9ff 301deg 329deg,#d3b8ff 329deg 360deg); }
-    .rainbow:after { width:300px; height:300px; bottom:-208px; background:#fbfaff; }
-    .dream-card { width:min(310px,76%); min-height:235px; display:grid; place-items:center; text-align:center; padding:28px; border:5px solid #fff; border-radius:34px; background:linear-gradient(145deg,#fff,#fff8fc); box-shadow:0 24px 55px #655c9822; transform:rotate(-3deg); }
-    .book { font-size:5.4rem; line-height:1; filter:drop-shadow(0 9px 7px #9078c626); }
-    .dream-card p { margin:14px 0 0; color:#7256b9; font-weight:850; }
-    .spark { position:absolute; color:#f5b934; font-size:1.7rem; }
-    .spark.one { top:39%; left:9%; }.spark.two { right:10%; bottom:28%; color:#ef88a8; font-size:1.35rem; }
-    .section { padding:54px 0 70px; }
-    .section-head { max-width:650px; margin:0 auto 30px; text-align:center; }
-    .section-head h2,.about h2 { margin:0 0 10px; font-size:clamp(2rem,4vw,3rem); line-height:1.12; letter-spacing:-.05em; }
-    .section-head p,.about p { margin:0; color:var(--muted); }
-    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    .card { min-height:220px; padding:25px; border-radius:25px; background:#fff; box-shadow:0 12px 35px #51458f10; border:1px solid #eeeafa; }
-    .icon { width:54px; height:54px; display:grid; place-items:center; margin-bottom:16px; border-radius:18px; font-size:1.75rem; background:#fff0f4; }
-    .card:nth-child(2) .icon { background:#fff6db; }.card:nth-child(3) .icon { background:#e8faf4; }
-    .card h3 { margin:0 0 7px; font-size:1.18rem; }.card p { margin:0; color:var(--muted); }
-    .about { display:grid; grid-template-columns:.75fr 1.25fr; gap:30px; align-items:center; margin:8px 0 74px; padding:35px; border-radius:30px; background:linear-gradient(120deg,#f0eaff,#fff0f5 70%,#fff8df); }
-    .about-art { display:grid; place-items:center; min-height:150px; font-size:5rem; }
-    .about p { max-width:650px; }
-    footer { padding:22px 0 34px; text-align:center; color:var(--muted); font-size:.92rem; }
-    :focus-visible { outline:3px solid #5139b7; outline-offset:4px; }
-    @media (max-width:760px) { .hero { grid-template-columns:1fr; gap:8px; padding:35px 0 42px; }.scene { min-height:330px; }.cards { grid-template-columns:1fr; }.card { min-height:0; }.about { grid-template-columns:1fr; gap:8px; padding:26px; }.about-art { min-height:100px; font-size:4rem; } }
-    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; }.button { transition:none; } }
+    :root{
+      --ink:#293653;--muted:#68758e;--pink:#ff78a8;--yellow:#ffd76e;
+      --blue:#83d9f4;--mint:#a8e8c9;--purple:#c9b7ff;--cream:#fff9ee;
+      --white:#fff;--shadow:0 16px 38px rgba(62,75,111,.12);--radius:26px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Trebuchet MS",system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    .wrap{width:min(1160px,92%);margin:auto}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);box-shadow:0 4px 18px rgba(50,60,90,.07)}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:10px;font-size:1.2rem;font-weight:1000;letter-spacing:-.5px}
+    .brand-mark{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--yellow),var(--pink));font-size:1.6rem;box-shadow:0 7px 18px #ffb8c766}
+    .brand-name span{color:#ee6e9b}
+    .navlinks{display:flex;gap:22px;align-items:center;color:#596681;font-weight:800;font-size:.93rem}
+    .navlinks a:hover{color:#ed6d9b}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 20px;font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(43,52,78,.12);transition:.2s}
+    .btn:hover{transform:translateY(-2px)}
+    .pink{background:var(--pink);color:white}.dark{background:var(--ink);color:white}.white{background:white;color:var(--ink)}
+    .menu{display:none;background:none;border:0;color:var(--ink);font-size:1.6rem}
+    .hero{overflow:hidden;position:relative;padding:72px 0 76px;background:linear-gradient(120deg,#fff0f5,#fff8df 50%,#eafaff)}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:white;padding:8px 14px;border-radius:999px;color:#d65e8c;font-weight:900;font-size:.83rem;box-shadow:0 5px 18px #b96b8b18}
+    h1{font-size:clamp(2.8rem,6vw,5.1rem);line-height:1.02;letter-spacing:-2.8px;margin:20px 0 16px;font-weight:1000}
+    h1 em{font-style:normal;color:#ed729d}
+    .hero p{font-size:1.1rem;color:var(--muted);max-width:560px;margin:0 0 26px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-art{min-height:350px;display:grid;place-items:center;position:relative}
+    .rainbow{font-size:clamp(11rem,23vw,17rem);line-height:1;filter:drop-shadow(0 15px 12px #d2a4a455);animation:float 4s ease-in-out infinite}
+    .bubble{position:absolute;background:#fff;padding:11px 16px;border-radius:20px;box-shadow:var(--shadow);font-weight:1000}
+    .b1{top:8%;left:2%;transform:rotate(-7deg)}.b2{right:0;top:23%;transform:rotate(6deg)}.b3{bottom:7%;left:12%;transform:rotate(4deg)}
+    .spark{position:absolute;font-size:2rem;animation:twinkle 2s ease-in-out infinite alternate}.s1{top:6%;right:22%}.s2{bottom:13%;right:8%}.s3{top:48%;left:0}
+    @keyframes float{50%{transform:translateY(-10px)}}@keyframes twinkle{to{transform:scale(1.25) rotate(15deg)}}
+    .section{padding:72px 0}
+    .head{text-align:center;max-width:690px;margin:0 auto 34px}
+    .kicker{text-transform:uppercase;letter-spacing:2px;color:#e66f9a;font-size:.78rem;font-weight:1000}
+    h2{font-size:clamp(2rem,4vw,3rem);line-height:1.15;letter-spacing:-1px;margin:8px 0 10px}
+    .head p{margin:0;color:var(--muted)}
+    .learning-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .learn-card{padding:24px 20px;background:white;border-radius:var(--radius);box-shadow:var(--shadow);transition:.2s;min-height:205px}
+    .learn-card:hover{transform:translateY(-5px)}
+    .iconbox{width:72px;height:72px;border-radius:23px;display:grid;place-items:center;font-size:2.45rem;margin-bottom:14px}
+    .learn-card:nth-child(1) .iconbox{background:#fff0b9}.learn-card:nth-child(2) .iconbox{background:#ffe0eb}.learn-card:nth-child(3) .iconbox{background:#dff6ff}.learn-card:nth-child(4) .iconbox{background:#e2f8e9}
+    .learn-card h3{margin:0 0 5px;font-size:1.15rem}.learn-card p{margin:0;color:var(--muted);font-size:.93rem}
+    .videos{background:#eff8ff}
+    .tools{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
+    .filters{display:flex;gap:9px;flex-wrap:wrap}
+    .chip{border:1px solid #dce4f0;background:#fff;color:#61708a;border-radius:999px;padding:9px 15px;font-weight:900;cursor:pointer}
+    .chip.active{background:#6f78ed;color:white;border-color:#6f78ed}
+    .search{border:1px solid #dce4f0;border-radius:999px;background:white;padding:11px 16px;min-width:min(100%,260px);outline-color:#9b91ff}
+    .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .video-card{background:white;border-radius:23px;overflow:hidden;box-shadow:var(--shadow);transition:.2s}
+    .video-card:hover{transform:translateY(-4px)}
+    .video-thumb{height:178px;display:grid;place-items:center;position:relative;font-size:4.2rem}
+    .video-card:nth-child(4n+1) .video-thumb{background:linear-gradient(135deg,#ffe49b,#ffb9c9)}
+    .video-card:nth-child(4n+2) .video-thumb{background:linear-gradient(135deg,#b8edff,#c9b7ff)}
+    .video-card:nth-child(4n+3) .video-thumb{background:linear-gradient(135deg,#c9f3d8,#fff0a9)}
+    .video-card:nth-child(4n) .video-thumb{background:linear-gradient(135deg,#ffd3e5,#d9d0ff)}
+    .play{position:absolute;right:15px;bottom:14px;width:43px;height:43px;border-radius:50%;background:white;color:#ee729e;display:grid;place-items:center;font-size:1.1rem;box-shadow:0 5px 14px #26324b20}
+    .video-copy{padding:17px 18px 20px}.video-copy small{font-weight:900;color:#e36f98;text-transform:uppercase;letter-spacing:1px}.video-copy h3{margin:5px 0;font-size:1.12rem}.video-copy p{margin:0;color:var(--muted);font-size:.92rem}
+    .empty{grid-column:1/-1;text-align:center;padding:28px;background:white;border-radius:20px;color:var(--muted)}
+    .alphabet{display:grid;grid-template-columns:repeat(13,1fr);gap:8px;margin-top:26px}
+    .letter{aspect-ratio:1;border-radius:14px;display:grid;place-items:center;font-size:1.2rem;font-weight:1000;background:white;box-shadow:0 5px 14px #47547712}
+    .letter:nth-child(4n+1){background:#fff0bd}.letter:nth-child(4n+2){background:#ffe3ed}.letter:nth-child(4n+3){background:#def5ff}.letter:nth-child(4n){background:#e0f7e9}
+    .alphabet-note{text-align:center;color:var(--muted);margin-top:18px}
+    .stories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .story{background:white;border-radius:23px;overflow:hidden;box-shadow:var(--shadow)}
+    .story-art{height:155px;display:grid;place-items:center;font-size:4.5rem}
+    .story:nth-child(1) .story-art{background:#ffedbd}.story:nth-child(2) .story-art{background:#e4ddff}.story:nth-child(3) .story-art{background:#d9f5e7}
+    .story-copy{padding:18px}.story-copy h3{margin:0 0 5px}.story-copy p{margin:0;color:var(--muted);font-size:.93rem}
+    .parent{background:linear-gradient(120deg,#fff0f5,#f2efff)}
+    .parent-box{max-width:850px;margin:auto;text-align:center;background:white;padding:36px;border-radius:30px;box-shadow:var(--shadow)}
+    .parent-box .heart{font-size:3rem}.parent-box p{color:var(--muted);max-width:700px;margin:10px auto 22px}
+    .cta{padding:65px 0;background:linear-gradient(110deg,#ff8db1,#ffc86d);text-align:center;color:white}
+    .cta h2{margin:0 0 10px}.cta p{margin:0 auto 22px;max-width:600px;color:#fff9}
+    footer{background:#293653;color:white;padding:36px 0 20px}
+    .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.foot p{color:#d0d8e8;margin:6px 0 0}
+    .footlinks{display:flex;gap:18px;flex-wrap:wrap;font-weight:800;color:#e6ebf5;font-size:.9rem}
+    .copyright{text-align:center;color:#b8c3d7;border-top:1px solid #ffffff25;margin-top:25px;padding-top:16px;font-size:.82rem}
+    @media(max-width:850px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:white;padding:18px 5%;box-shadow:0 12px 18px #26324b12;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu{display:block}.nav>.btn{display:none}.hero-grid{grid-template-columns:1fr;text-align:center}.hero p{margin-left:auto;margin-right:auto}.actions{justify-content:center}.hero-art{min-height:280px}.learning-grid{grid-template-columns:repeat(2,1fr)}.video-grid{grid-template-columns:repeat(2,1fr)}.alphabet{grid-template-columns:repeat(7,1fr)}}
+    @media(max-width:560px){.hero{padding:52px 0}.hero-art{min-height:230px}.learning-grid,.video-grid,.stories{grid-template-columns:1fr}.section{padding:55px 0}.alphabet{gap:6px}.letter{font-size:1rem;border-radius:9px}.parent-box{padding:25px 18px}.foot{flex-direction:column;align-items:flex-start}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
   </style>
 </head>
 <body>
-  <header>
-    <nav class="nav wrap" aria-label="Main navigation">
-      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">🌈</span><span>Little Dreams TV</span></a>
-      <a class="nav-link" href="#explore">Explore the fun <span aria-hidden="true">→</span></a>
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="#home"><span class="brand-mark">🌈</span><span class="brand-name">Little <span>Dreams</span> TV</span></a>
+    <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+      <a href="#learn">Learning</a><a href="#videos">Videos</a><a href="#alphabet">ABC</a><a href="#stories">Stories</a><a href="#about">About</a>
     </nav>
-  </header>
-  <main id="top">
-    <section class="hero wrap" aria-labelledby="hero-title">
+    <a class="btn pink" href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">▶ Subscribe</a>
+    <button class="menu" id="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow"><span aria-hidden="true">✨</span> Learn · Play · Sing · Grow</span>
-        <h1 id="hero-title">Little dreams.<br><span>Big adventures.</span></h1>
-        <p class="intro">A happy place for curious little minds. Sing along, discover new ideas, and let your imagination go wherever it dreams.</p>
-        <div class="actions"><a class="button primary" href="#explore">Come explore <span aria-hidden="true">&nbsp;→</span></a><a class="button secondary" href="#about">Meet Little Dreams TV</a></div>
+        <span class="eyebrow">✨ A happy place for little learners</span>
+        <h1>Big dreams begin with <em>little</em> steps!</h1>
+        <p>Welcome to a colorful world of learning and fun. Sing cheerful nursery rhymes, explore ABCs, count numbers and enjoy lovely stories with Little Dreams TV.</p>
+        <div class="actions">
+          <a class="btn pink" href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+          <a class="btn white" href="#learn">Explore & learn ↓</a>
+        </div>
       </div>
-      <div class="scene" aria-hidden="true"><span class="sun">☀️</span><span class="cloud">☁️</span><span class="spark one">✦</span><span class="spark two">✦</span><div class="rainbow"></div><div class="dream-card"><div class="book">📚</div><p>Make room for wonder!</p></div></div>
-    </section>
-    <section class="section wrap" id="explore" aria-labelledby="explore-title">
-      <div class="section-head"><span class="eyebrow">A world of wonder</span><h2 id="explore-title">There’s something fun around every corner</h2><p>Big smiles, bright ideas, and joyful moments made for growing minds.</p></div>
-      <div class="cards">
-        <article class="card"><div class="icon" aria-hidden="true">🎵</div><h3>Sing &amp; move</h3><p>Clap, dance, and learn through cheerful songs and playful rhythms.</p></article>
-        <article class="card"><div class="icon" aria-hidden="true">📖</div><h3>Stories &amp; imagination</h3><p>Open a storybook and journey into magical worlds full of possibility.</p></article>
-        <article class="card"><div class="icon" aria-hidden="true">🌱</div><h3>Learn &amp; explore</h3><p>Discover letters, numbers, colors, and the little things all around us.</p></article>
+      <div class="hero-art" aria-label="A cheerful rainbow with playful learning labels">
+        <span class="spark s1">✨</span><span class="spark s2">⭐</span><span class="spark s3">💫</span>
+        <div class="rainbow">🌈</div>
+        <div class="bubble b1">🔤 ABC time!</div><div class="bubble b2">🎵 Sing along!</div><div class="bubble b3">🧸 Let's play!</div>
       </div>
-    </section>
-    <section class="about wrap" id="about" aria-labelledby="about-title"><div class="about-art" aria-hidden="true">🌟</div><div><h2 id="about-title">Growing one curious moment at a time</h2><p>Little Dreams TV brings learning and play together in a bright, welcoming world. Every little question can lead to a wonderful new adventure.</p></div></section>
-  </main>
-  <footer><div class="wrap">Made for little dreamers everywhere <span aria-hidden="true">💛</span></div></footer>
+    </div>
+  </section>
+
+  <section class="section" id="learn">
+    <div class="wrap">
+      <div class="head"><div class="kicker">Learn through play</div><h2>What shall we discover today?</h2><p>Little lessons and big smiles for curious minds.</p></div>
+      <div class="learning-grid">
+        <article class="learn-card"><div class="iconbox">🔤</div><h3>ABC Learning</h3><p>Discover letters A to Z, their sounds and simple words.</p></article>
+        <article class="learn-card"><div class="iconbox">🎶</div><h3>Nursery Rhymes</h3><p>Clap, dance and sing along to fun children's songs.</p></article>
+        <article class="learn-card"><div class="iconbox">📚</div><h3>Kids Stories</h3><p>Enjoy gentle adventures about friendship, kindness and imagination.</p></article>
+        <article class="learn-card"><div class="iconbox">🔢</div><h3>Numbers & Colors</h3><p>Practice counting and explore shapes and colors.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section videos" id="videos">
+    <div class="wrap">
+      <div class="head"><div class="kicker">Watch • sing • learn</div><h2>Explore our video world</h2><p>Choose a topic, find something fun and visit our official YouTube channel to watch.</p></div>
+      <div class="tools">
+        <div class="filters" id="filters" aria-label="Filter videos">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="abc">ABC</button>
+          <button class="chip" data-filter="rhymes">Rhymes</button>
+          <button class="chip" data-filter="stories">Stories</button>
+          <button class="chip" data-filter="learning">Learning</button>
+        </div>
+        <input class="search" id="search" type="search" placeholder="Search topics..." aria-label="Search video topics">
+      </div>
+      <div class="video-grid" id="videoGrid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="section" id="alphabet">
+    <div class="wrap">
+      <div class="head"><div class="kicker">Alphabet corner</div><h2>Let's say our ABCs!</h2><p>Look at each letter and say it aloud. What word begins with that letter?</p></div>
+      <div class="alphabet" aria-label="Letters A to Z">
+        <span class="letter">A</span><span class="letter">B</span><span class="letter">C</span><span class="letter">D</span><span class="letter">E</span><span class="letter">F</span><span class="letter">G</span><span class="letter">H</span><span class="letter">I</span><span class="letter">J</span><span class="letter">K</span><span class="letter">L</span><span class="letter">M</span><span class="letter">N</span><span class="letter">O</span><span class="letter">P</span><span class="letter">Q</span><span class="letter">R</span><span class="letter">S</span><span class="letter">T</span><span class="letter">U</span><span class="letter">V</span><span class="letter">W</span><span class="letter">X</span><span class="letter">Y</span><span class="letter">Z</span>
+      </div>
+      <p class="alphabet-note">🍎 A is for Apple &nbsp; ⚽ B is for Ball &nbsp; 🐱 C is for Cat</p>
+    </div>
+  </section>
+
+  <section class="section" id="stories">
+    <div class="wrap">
+      <div class="head"><div class="kicker">Little story time</div><h2>Stories full of wonder</h2><p>Imagine, explore and learn something kind along the way.</p></div>
+      <div class="stories">
+        <article class="story"><div class="story-art">🦁🌳</div><div class="story-copy"><h3>Forest Friends</h3><p>Meet friendly animals and discover how helping each other makes us stronger.</p></div></article>
+        <article class="story"><div class="story-art">🚀🌙</div><div class="story-copy"><h3>Dreamy Space Trip</h3><p>Imagine flying among the stars on a gentle adventure through space.</p></div></article>
+        <article class="story"><div class="story-art">🐰🌷</div><div class="story-copy"><h3>The Kind Little Bunny</h3><p>A sweet story about sharing, caring and being a good friend.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about" style="background:linear-gradient(120deg,#fff0f5,#f2efff)">
+    <div class="wrap">
+      <div class="parent-box"><div class="heart">💛</div><div class="kicker">For parents & families</div><h2>Growing curious, kind little minds</h2><p>Little Dreams TV is a cheerful place for children and families to explore early learning through songs, stories and simple educational topics. Parents and caregivers are encouraged to watch with young children and choose age-appropriate content together.</p><a class="btn dark" href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">Visit our YouTube channel ↗</a></div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap"><h2>Come dream, learn and sing with us! 🌈</h2><p>Join our happy little learning family. Subscribe to Little Dreams TV and let the fun begin.</p><a class="btn white" href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">▶ Subscribe on YouTube</a></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><a class="brand" href="#home"><span class="brand-mark">🌈</span><span>Little Dreams TV</span></a><p>Learn • Play • Sing • Grow</p></div>
+      <div class="footlinks"><a href="#home">Home</a><a href="#learn">Learning</a><a href="#videos">Videos</a><a href="#stories">Stories</a><a href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">YouTube ↗</a></div>
+    </div>
+    <div class="copyright">© <span id="year"></span> Little Dreams TV. Made with 💖 for little learners.</div>
+  </div>
+</footer>
+
+<script>
+  const channelUrl = "https://www.youtube.com/@LittleDreamsTV-v8j";
+  const topics = [
+    {title:"Learn the Alphabet A to Z",category:"abc",label:"ABC Learning",emoji:"🔤",desc:"Say every letter and discover easy words from A to Z."},
+    {title:"Old MacDonald Had a Farm",category:"rhymes",label:"Nursery Rhymes",emoji:"🐮",desc:"Sing along with friendly farm animals and their sounds."},
+    {title:"The Little Kindness Story",category:"stories",label:"Kids Stories",emoji:"🐰",desc:"A gentle story about sharing, caring and friendship."},
+    {title:"Count from 1 to 10",category:"learning",label:"Numbers",emoji:"🔢",desc:"Practice counting with bright and playful examples."},
+    {title:"Learn Colors for Kids",category:"learning",label:"Colors",emoji:"🎨",desc:"Explore red, blue, yellow, green and many more colors."},
+    {title:"Chitti Chilakam",category:"rhymes",label:"Telugu Rhymes",emoji:"🐦",desc:"A cheerful little rhyme for children to sing and enjoy."},
+    {title:"The Magical Forest",category:"stories",label:"Kids Stories",emoji:"🦋",desc:"Explore a magical forest and meet its friendly characters."},
+    {title:"ABC Words with Pictures",category:"abc",label:"ABC Learning",emoji:"🍎",desc:"Connect letters with familiar objects and easy words."}
+  ];
+  const grid = document.getElementById("videoGrid");
+  const search = document.getElementById("search");
+  const chips = [...document.querySelectorAll(".chip")];
+  let active = "all";
+
+  function render(){
+    const q = search.value.trim().toLowerCase();
+    const filtered = topics.filter(item =>
+      (active === "all" || item.category === active) &&
+      (!q || (item.title + " " + item.desc + " " + item.label).toLowerCase().includes(q))
+    );
+    grid.innerHTML = filtered.map(item => `
+      <article class="video-card">
+        <a href="${channelUrl}" target="_blank" rel="noopener" aria-label="Visit YouTube for ${item.title}">
+          <div class="video-thumb"><span>${item.emoji}</span><span class="play">▶</span></div>
+          <div class="video-copy"><small>${item.label}</small><h3>${item.title}</h3><p>${item.desc}</p></div>
+        </a>
+      </article>`).join("");
+    if(!filtered.length) grid.innerHTML = '<div class="empty">No topics found. Try another search! 🌟</div>';
+  }
+  chips.forEach(chip => chip.addEventListener("click", () => {
+    chips.forEach(c => c.classList.toggle("active", c === chip));
+    active = chip.dataset.filter; render();
+  }));
+  search.addEventListener("input", render);
+  const menu = document.getElementById("menu");
+  const nav = document.getElementById("navlinks");
+  menu.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    menu.setAttribute("aria-expanded", String(open));
+    menu.textContent = open ? "✕" : "☰";
+  });
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    nav.classList.remove("open"); menu.setAttribute("aria-expanded","false"); menu.textContent="☰";
+  }));
+  document.getElementById("year").textContent = new Date().getFullYear();
+  render();
+</script>
 </body>
 </html>
