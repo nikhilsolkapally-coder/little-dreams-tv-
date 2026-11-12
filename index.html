@@ -60,6 +60,17 @@
     .chip.active{background:#6f78ed;color:white;border-color:#6f78ed}
     .search{border:1px solid #dce4f0;border-radius:999px;background:white;padding:11px 16px;min-width:min(100%,260px);outline-color:#9b91ff}
     .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .featured-video{display:grid;grid-template-columns:1.35fr .65fr;max-width:1000px;margin:auto;overflow:hidden;background:white;border-radius:26px;box-shadow:var(--shadow)}
+    .video-player{aspect-ratio:16/9;background:#293653}
+    .video-player iframe{display:block;width:100%;height:100%;border:0}
+    .video-local-fallback{display:flex;width:100%;height:100%;min-height:200px;aspect-ratio:16/9;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;background:radial-gradient(circle at 72% 50%,#554172 0,#293653 58%);color:white;text-align:center;text-decoration:none}
+    .video-local-fallback strong{font-size:1.35rem}
+    .video-local-fallback small{color:#e0d8ef;font-size:.95rem;font-weight:600;letter-spacing:normal;text-transform:none}
+    .video-details{display:flex;flex-direction:column;justify-content:center;padding:26px}
+    .video-details small{font-weight:900;color:#e36f98;text-transform:uppercase;letter-spacing:1px}
+    .video-details h3{margin:7px 0 10px;font-size:1.2rem;line-height:1.35}
+    .video-details p{margin:0 0 16px;color:var(--muted);font-size:.92rem}
+    .video-details a{color:#e36f98;font-weight:900;text-underline-offset:3px}
     .video-card{background:white;border-radius:23px;overflow:hidden;box-shadow:var(--shadow);transition:.2s}
     .video-card:hover{transform:translateY(-4px)}
     .video-thumb{height:178px;display:grid;place-items:center;position:relative;font-size:4.2rem}
@@ -88,8 +99,8 @@
     .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.foot p{color:#d0d8e8;margin:6px 0 0}
     .footlinks{display:flex;gap:18px;flex-wrap:wrap;font-weight:800;color:#e6ebf5;font-size:.9rem}
     .copyright{text-align:center;color:#b8c3d7;border-top:1px solid #ffffff25;margin-top:25px;padding-top:16px;font-size:.82rem}
-    @media(max-width:850px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:white;padding:18px 5%;box-shadow:0 12px 18px #26324b12;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu{display:block}.nav>.btn{display:none}.hero-grid{grid-template-columns:1fr;text-align:center}.hero p{margin-left:auto;margin-right:auto}.actions{justify-content:center}.hero-art{min-height:280px}.learning-grid{grid-template-columns:repeat(2,1fr)}.video-grid{grid-template-columns:repeat(2,1fr)}.alphabet{grid-template-columns:repeat(7,1fr)}}
-    @media(max-width:560px){.hero{padding:52px 0}.hero-art{min-height:230px}.learning-grid,.video-grid,.stories{grid-template-columns:1fr}.section{padding:55px 0}.alphabet{gap:6px}.letter{font-size:1rem;border-radius:9px}.parent-box{padding:25px 18px}.foot{flex-direction:column;align-items:flex-start}}
+    @media(max-width:850px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:white;padding:18px 5%;box-shadow:0 12px 18px #26324b12;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu{display:block}.nav>.btn{display:none}.hero-grid{grid-template-columns:1fr;text-align:center}.hero p{margin-left:auto;margin-right:auto}.actions{justify-content:center}.hero-art{min-height:280px}.learning-grid{grid-template-columns:repeat(2,1fr)}.featured-video{grid-template-columns:1fr}.alphabet{grid-template-columns:repeat(7,1fr)}}
+    @media(max-width:560px){.hero{padding:52px 0}.hero-art{min-height:230px}.learning-grid,.stories{grid-template-columns:1fr}.section{padding:55px 0}.alphabet{gap:6px}.letter{font-size:1rem;border-radius:9px}.parent-box{padding:25px 18px}.foot{flex-direction:column;align-items:flex-start}.video-details{padding:21px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
   </style>
 </head>
@@ -139,18 +150,18 @@
 
   <section class="section videos" id="videos">
     <div class="wrap">
-      <div class="head"><div class="kicker">Watch • sing • learn</div><h2>Explore our video world</h2><p>Choose a topic, find something fun and visit our official YouTube channel to watch.</p></div>
-      <div class="tools">
-        <div class="filters" id="filters" aria-label="Filter videos">
-          <button class="chip active" data-filter="all">All</button>
-          <button class="chip" data-filter="abc">ABC</button>
-          <button class="chip" data-filter="rhymes">Rhymes</button>
-          <button class="chip" data-filter="stories">Stories</button>
-          <button class="chip" data-filter="learning">Learning</button>
+      <div class="head"><div class="kicker">Watch • sing • learn</div><h2>Watch our latest video</h2><p>Enjoy a real LittleDreamsTV upload right here on the website.</p></div>
+      <article class="featured-video">
+        <div class="video-player">
+          <iframe src="https://www.youtube-nocookie.com/embed/HJvIdoUnd2s" title="Colorful A-Z spelling kids thumbnail, cute children, animals, rainbow, big text, LittleDreamTV" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-        <input class="search" id="search" type="search" placeholder="Search topics..." aria-label="Search video topics">
-      </div>
-      <div class="video-grid" id="videoGrid" aria-live="polite"></div>
+        <div class="video-details">
+          <small>ABC Learning</small>
+          <h3>Colorful A-Z spelling kids thumbnail, cute children, animals, rainbow, big text, LittleDreamTV</h3>
+          <p>Watch the video here or open it on YouTube.</p>
+          <a href="https://www.youtube.com/watch?v=HJvIdoUnd2s" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -197,42 +208,9 @@
 </footer>
 
 <script>
-  const channelUrl = "https://www.youtube.com/@LittleDreamsTV-v8j";
-  const topics = [
-    {title:"Learn the Alphabet A to Z",category:"abc",label:"ABC Learning",emoji:"🔤",desc:"Say every letter and discover easy words from A to Z."},
-    {title:"Old MacDonald Had a Farm",category:"rhymes",label:"Nursery Rhymes",emoji:"🐮",desc:"Sing along with friendly farm animals and their sounds."},
-    {title:"The Little Kindness Story",category:"stories",label:"Kids Stories",emoji:"🐰",desc:"A gentle story about sharing, caring and friendship."},
-    {title:"Count from 1 to 10",category:"learning",label:"Numbers",emoji:"🔢",desc:"Practice counting with bright and playful examples."},
-    {title:"Learn Colors for Kids",category:"learning",label:"Colors",emoji:"🎨",desc:"Explore red, blue, yellow, green and many more colors."},
-    {title:"Chitti Chilakam",category:"rhymes",label:"Telugu Rhymes",emoji:"🐦",desc:"A cheerful little rhyme for children to sing and enjoy."},
-    {title:"The Magical Forest",category:"stories",label:"Kids Stories",emoji:"🦋",desc:"Explore a magical forest and meet its friendly characters."},
-    {title:"ABC Words with Pictures",category:"abc",label:"ABC Learning",emoji:"🍎",desc:"Connect letters with familiar objects and easy words."}
-  ];
-  const grid = document.getElementById("videoGrid");
-  const search = document.getElementById("search");
-  const chips = [...document.querySelectorAll(".chip")];
-  let active = "all";
-
-  function render(){
-    const q = search.value.trim().toLowerCase();
-    const filtered = topics.filter(item =>
-      (active === "all" || item.category === active) &&
-      (!q || (item.title + " " + item.desc + " " + item.label).toLowerCase().includes(q))
-    );
-    grid.innerHTML = filtered.map(item => `
-      <article class="video-card">
-        <a href="${channelUrl}" target="_blank" rel="noopener" aria-label="Visit YouTube for ${item.title}">
-          <div class="video-thumb"><span>${item.emoji}</span><span class="play">▶</span></div>
-          <div class="video-copy"><small>${item.label}</small><h3>${item.title}</h3><p>${item.desc}</p></div>
-        </a>
-      </article>`).join("");
-    if(!filtered.length) grid.innerHTML = '<div class="empty">No topics found. Try another search! 🌟</div>';
+  if (location.protocol === "file:") {
+    document.querySelector(".video-player").innerHTML = '<a class="video-local-fallback" href="https://www.youtube.com/watch?v=HJvIdoUnd2s" target="_blank" rel="noopener"><strong>Video preview</strong><small>Embedded playback is available on the published website.</small><span>Watch on YouTube ↗</span></a>';
   }
-  chips.forEach(chip => chip.addEventListener("click", () => {
-    chips.forEach(c => c.classList.toggle("active", c === chip));
-    active = chip.dataset.filter; render();
-  }));
-  search.addEventListener("input", render);
   const menu = document.getElementById("menu");
   const nav = document.getElementById("navlinks");
   menu.addEventListener("click", () => {
@@ -244,7 +222,6 @@
     nav.classList.remove("open"); menu.setAttribute("aria-expanded","false"); menu.textContent="☰";
   }));
   document.getElementById("year").textContent = new Date().getFullYear();
-  render();
 </script>
 </body>
 </html>
