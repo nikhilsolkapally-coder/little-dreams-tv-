@@ -16,6 +16,8 @@
     html{scroll-behavior:smooth}
     body{margin:0;font-family:"Trebuchet MS",system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
     a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #6f78ed;outline-offset:3px}
+    .video-player iframe{max-width:100%}
     button,input{font:inherit}
     .wrap{width:min(1160px,92%);margin:auto}
     .topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);box-shadow:0 4px 18px rgba(50,60,90,.07)}
@@ -112,7 +114,7 @@
       <a href="#learn">Learning</a><a href="#videos">Videos</a><a href="#alphabet">ABC</a><a href="#stories">Stories</a><a href="#about">About</a>
     </nav>
     <a class="btn pink" href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">▶ Subscribe</a>
-    <button class="menu" id="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <button class="menu" id="menu" aria-label="Open navigation" aria-controls="navlinks" aria-expanded="false">☰</button>
   </div>
 </header>
 
@@ -150,14 +152,14 @@
 
   <section class="section videos" id="videos">
     <div class="wrap">
-      <div class="head"><div class="kicker">Watch • sing • learn</div><h2>Watch our latest video</h2><p>Enjoy a real LittleDreamsTV upload right here on the website.</p></div>
+      <div class="head"><div class="kicker">Watch • sing • learn</div><h2>Watch our latest video</h2><p>Enjoy a featured Little Dreams TV video right here on the website.</p></div>
       <article class="featured-video">
         <div class="video-player">
-          <iframe src="https://www.youtube-nocookie.com/embed/HJvIdoUnd2s" title="Colorful A-Z spelling kids thumbnail, cute children, animals, rainbow, big text, LittleDreamTV" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe src="https://www.youtube-nocookie.com/embed/HJvIdoUnd2s" title="Watch Learn the Alphabet A to Z, a fun ABC learning video for kids" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         <div class="video-details">
-          <small>ABC Learning</small>
-          <h3>Colorful A-Z spelling kids thumbnail, cute children, animals, rainbow, big text, LittleDreamTV</h3>
+          <small>Featured ABC Learning</small>
+          <h3>Learn the Alphabet A to Z | Fun ABC Learning for Kids</h3>
           <p>Watch the video here or open it on YouTube.</p>
           <a href="https://www.youtube.com/watch?v=HJvIdoUnd2s" target="_blank" rel="noopener">Watch on YouTube ↗</a>
         </div>
@@ -211,15 +213,17 @@
   if (location.protocol === "file:") {
     document.querySelector(".video-player").innerHTML = '<a class="video-local-fallback" href="https://www.youtube.com/watch?v=HJvIdoUnd2s" target="_blank" rel="noopener"><strong>Video preview</strong><small>Embedded playback is available on the published website.</small><span>Watch on YouTube ↗</span></a>';
   }
+  // Featured video is selected manually; a YouTube Data API integration can automate this later.
   const menu = document.getElementById("menu");
   const nav = document.getElementById("navlinks");
   menu.addEventListener("click", () => {
     const open = nav.classList.toggle("open");
     menu.setAttribute("aria-expanded", String(open));
+    menu.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
     menu.textContent = open ? "✕" : "☰";
   });
   nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
-    nav.classList.remove("open"); menu.setAttribute("aria-expanded","false"); menu.textContent="☰";
+    nav.classList.remove("open"); menu.setAttribute("aria-expanded","false"); menu.setAttribute("aria-label","Open navigation"); menu.textContent="☰";
   }));
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
