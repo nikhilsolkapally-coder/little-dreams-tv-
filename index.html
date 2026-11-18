@@ -56,6 +56,28 @@
     @media(max-width:820px){.kid-banner{grid-template-columns:1fr;text-align:center;gap:8px;padding:22px 16px}.kid-friends,.kid-tv{display:none}.kid-pills{justify-content:center}}
     @media(max-width:560px){.hero-visual{min-height:300px;border-radius:28px}.hero-photo{height:260px}.kid-banner h2{font-size:1.8rem}.kid-pills span{font-size:.68rem;padding:6px 10px}}
 
+  
+/* Free, self-contained animated learning scenes */
+.free-showcase{margin:26px 0 8px;border:5px solid #fff;border-radius:30px;overflow:hidden;box-shadow:0 12px 28px #55407818;position:relative;min-height:230px;padding:24px;background:linear-gradient(120deg,#dff5ff,#fff0f8 55%,#fff4d7)}
+.free-showcase .scene-title{font:700 clamp(1.25rem,2.5vw,2rem) Fredoka,sans-serif;color:#3c2671;margin:0 0 8px}
+.free-showcase p{color:#4c5870;margin:0 0 14px;max-width:620px}
+.free-scene{display:flex;align-items:center;justify-content:center;gap:clamp(12px,4vw,42px);min-height:115px;flex-wrap:wrap}
+.scene-friend{font-size:clamp(2.7rem,6vw,4.8rem);filter:drop-shadow(0 5px 2px #5b4b6720);animation:friendBounce 2s ease-in-out infinite}
+.scene-friend:nth-child(2){animation-delay:.35s}.scene-friend:nth-child(3){animation-delay:.7s}
+.scene-letter{font:700 clamp(3rem,8vw,5.5rem) Fredoka,sans-serif;color:#ff5599;text-shadow:3px 4px 0 #fff,0 8px 0 #ffd1e5;animation:letterPop 1.8s ease-in-out infinite}
+.scene-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.scene-btn{border:0;border-radius:999px;background:#6d48d9;color:white;padding:11px 18px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #452a9c}
+.scene-btn.secondary{background:#ff6c9d;box-shadow:0 4px 0 #bf3b70}
+.scene-btn:focus-visible{outline:3px solid #202044;outline-offset:3px}
+.rhythm-notes{font-size:2rem;letter-spacing:10px;animation:notesFloat 2.5s ease-in-out infinite}
+.story-bubble{background:#fff;border:3px solid #ffca72;border-radius:24px;padding:14px 18px;max-width:620px;color:#50326d;font-weight:700;box-shadow:0 5px 0 #f5dcae}
+.game-answer{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.game-answer button{border:2px solid #fff;background:#fff;border-radius:16px;padding:12px 18px;font-size:1.15rem;font-weight:800;color:#40296c;cursor:pointer;box-shadow:0 4px 0 #d8c9ef}
+.game-feedback{font-weight:800;color:#267c54;min-height:25px;margin-top:10px}
+@keyframes friendBounce{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-13px) rotate(4deg)}}
+@keyframes letterPop{0%,100%{transform:scale(1)}50%{transform:scale(1.12) rotate(-4deg)}}
+@keyframes notesFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@media(prefers-reduced-motion:reduce){.scene-friend,.scene-letter,.rhythm-notes{animation:none}}
+
   </style>
 </head>
 <body>
@@ -104,7 +126,9 @@
       </div>
     </section>
     <section class="section section-pink" id="abc">
-      <div class="container"><div class="section-head"><div class="overline">The alphabet garden</div><h2>One letter, one new discovery</h2><p>Tap a letter and say the word out loud. Ready? Let's go from A to Z!</p></div>
+      <div class="container"><div class="section-head"><div class="overline">The alphabet garden</div>
+<div class="free-showcase"><h3 class="scene-title">🌈 ABC Magic Show</h3><p>Meet the letters with our little friends. Press play to hear the letter and its first word!</p><div class="free-scene"><span class="scene-friend">👦🏻</span><span class="scene-letter" id="abcSceneLetter">A a</span><span class="scene-friend" id="abcSceneObject">🍎</span><span class="scene-friend">👧🏻</span></div><div class="scene-actions"><button class="scene-btn" id="abcPlay">▶ Hear this letter</button><button class="scene-btn secondary" id="abcNext">Next letter →</button></div></div>
+<h2>One letter, one new discovery</h2><p>Tap a letter and say the word out loud. Ready? Let's go from A to Z!</p></div>
         <div class="learning-layout">
           <div class="learning-intro"><div><div class="overline">Little word explorers</div><h3>Letters make a world of words.</h3><p>Choose any letter to discover a new word. Try saying it together!</p></div><div class="big-abc">Aa Bb</div></div>
           <div class="alphabet-panel"><div class="alphabet-grid" id="alphabetGrid" aria-label="Choose a letter from A to Z"></div><div class="letter-output" id="letterOutput" aria-live="polite">🍎 <strong>A is for Apple!</strong> Choose another letter to explore.</div></div>
@@ -112,7 +136,9 @@
       </div>
     </section>
     <section class="section section-soft" id="rhymes">
-      <div class="container"><div class="section-head"><div class="overline">A little music break</div><h2>Turn up the smiles!</h2><p>Little songs can make big memories. Find a tune and sing along.</p></div>
+      <div class="container"><div class="section-head"><div class="overline">A little music break</div>
+<div class="free-showcase" style="background:linear-gradient(120deg,#ffe5f0,#e7e3ff,#dff7ff)"><h3 class="scene-title">🎵 Clap, Tap, Sing Along!</h3><p>Try our original Little Dreams action rhyme. Clap your hands and move with the beat!</p><div class="free-scene"><span class="scene-friend">🧒🏻</span><span class="rhythm-notes">🎵 🎶 ⭐</span><span class="scene-friend">👧🏻</span></div><div class="story-bubble" id="rhymeWords">Clap your hands, one, two, three! Wiggle like a happy bee! Stomp your feet and touch the sky. Wave hello and wave goodbye!</div><div class="scene-actions"><button class="scene-btn" id="rhymePlay">▶ Sing the rhyme</button><button class="scene-btn secondary" id="rhymeStop">Stop</button></div></div>
+<h2>Turn up the smiles!</h2><p>Little songs can make big memories. Find a tune and sing along.</p></div>
         <div class="rhymes-grid">
           <a class="rhymes-feature" href="https://www.youtube.com/@LittleDreamsTV-v8j/search?query=nursery%20rhymes" target="_blank" rel="noopener noreferrer"><img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=76" alt="Colourful live music lights and a joyful music atmosphere" loading="lazy" decoding="async"><div class="rhymes-overlay"><span class="overline" style="color:#ffe08b">SING-ALONG TIME</span><h3>Little voices, happy choices.</h3><p>Discover nursery rhymes and cheerful songs on our channel.</p></div></a>
           <div class="rhymes-side">
@@ -123,7 +149,9 @@
       </div>
     </section>
     <section class="section section-lilac" id="stories">
-      <div class="container"><div class="section-head"><div class="overline">Once upon a time</div><h2>Welcome to the story garden</h2><p>Wonderful worlds, lovable characters and little lessons to remember.</p></div>
+      <div class="container"><div class="section-head"><div class="overline">Once upon a time</div>
+<div class="free-showcase" style="background:linear-gradient(120deg,#e3f8df,#fff4d8,#f2e8ff)"><h3 class="scene-title">🌳 A Little Story: The Lost Teddy</h3><p>Follow Mia and her friend as they learn that kindness makes everyone smile.</p><div class="free-scene"><span class="scene-friend">👧🏻</span><span class="scene-friend">🧸</span><span class="scene-friend">🐰</span><span class="scene-friend">👦🏻</span></div><div class="story-bubble" id="storyText">Mia found a little teddy sitting under a tree. It looked lonely. “Let's find its owner!” she said.</div><div class="scene-actions"><button class="scene-btn" id="storyNext">Next story part →</button><button class="scene-btn secondary" id="storyRead">🔊 Read aloud</button></div></div>
+<h2>Welcome to the story garden</h2><p>Wonderful worlds, lovable characters and little lessons to remember.</p></div>
         <div class="story-grid">
           <article class="story-card"><div class="story-image"><img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=640&q=75" alt="Deer standing in a peaceful green forest" loading="lazy" decoding="async"></div><div class="story-body"><span class="story-tag">Friendship · Nature</span><h3>Friends of the Forest</h3><p>A little adventure about helping others and caring for the world around us.</p></div></article>
           <article class="story-card"><div class="story-image"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=640&q=75" alt="The Earth seen from space" loading="lazy" decoding="async"></div><div class="story-body"><span class="story-tag">Wonder · Discovery</span><h3>A Trip Among the Stars</h3><p>Imagine floating through space and discovering the wonders of our universe.</p></div></article>
@@ -133,7 +161,9 @@
       </div>
     </section>
     <section class="section section-blue" id="play">
-      <div class="container"><div class="section-head"><div class="overline">Little learning lab</div><h2>Let's play and discover</h2><p>Small activities that make everyday learning feel like play.</p></div>
+      <div class="container"><div class="section-head"><div class="overline">Little learning lab</div>
+<div class="free-showcase" style="background:linear-gradient(120deg,#fff0cf,#e2f5ff,#e8f9e9)"><h3 class="scene-title">🎮 Count, Spot & Discover!</h3><p>Let's play a little learning game. Choose the correct answer!</p><div class="free-scene"><span class="scene-friend">👦🏻</span><span class="scene-letter" id="gameQuestion">How many?</span><span class="scene-friend" id="gameObjects">🍓🍓🍓</span><span class="scene-friend">👧🏻</span></div><div class="game-answer" id="gameAnswers"><button data-answer="2">2</button><button data-answer="3">3</button><button data-answer="4">4</button></div><div class="game-feedback" id="gameFeedback" aria-live="polite">Pick the right number!</div></div>
+<h2>Let's play and discover</h2><p>Small activities that make everyday learning feel like play.</p></div>
         <div class="counting-layout">
           <div class="count-card"><div class="overline">Count with me</div><div class="count-number" id="countNumber" aria-live="polite">1</div><div class="count-word" id="countWord">ONE · ⭐</div><div class="count-buttons"><button class="button button-primary" id="nextCount" type="button">Next number →</button><button class="button button-light" id="resetCount" type="button">Start again ↺</button></div></div>
           <div class="count-art" aria-hidden="true">🧸🍎🎈</div>
@@ -201,6 +231,25 @@
     let activeCategory="all";const gallerySearch=document.getElementById("gallerySearch"),galleryCards=[...document.querySelectorAll(".gallery-card")],noResults=document.getElementById("noResults");
     function filterGallery(){const query=gallerySearch.value.trim().toLowerCase();let shown=0;galleryCards.forEach(card=>{const categoryMatch=activeCategory==="all"||card.dataset.category===activeCategory;const textMatch=(card.dataset.search+" "+card.textContent).toLowerCase().includes(query);const visible=categoryMatch&&textMatch;card.hidden=!visible;if(visible)shown++;});noResults.hidden=shown!==0;}
     document.querySelectorAll(".filter-btn").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".filter-btn").forEach(item=>item.classList.remove("active"));button.classList.add("active");activeCategory=button.dataset.filter;filterGallery();}));gallerySearch.addEventListener("input",filterGallery);
+  
+    // Free interactive mini-animations: no paid video or audio services required.
+    const speakFree=(text)=>{if(!("speechSynthesis" in window)){alert("Speech is not available in this browser. Try Chrome or Edge.");return;}window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang="en-IN";u.rate=.82;u.pitch=1.12;window.speechSynthesis.speak(u);};
+    const abcWords=[["A","Apple","🍎"],["B","Ball","⚽"],["C","Cat","🐱"],["D","Dog","🐶"],["E","Elephant","🐘"],["F","Fish","🐟"],["G","Grapes","🍇"],["H","House","🏠"],["I","Ice cream","🍦"],["J","Juice","🧃"],["K","Kite","🪁"],["L","Lion","🦁"],["M","Moon","🌙"],["N","Nest","🪺"],["O","Orange","🍊"],["P","Penguin","🐧"],["Q","Queen","👑"],["R","Rabbit","🐰"],["S","Sun","☀️"],["T","Tiger","🐯"],["U","Umbrella","☂️"],["V","Van","🚐"],["W","Whale","🐳"],["X","Xylophone","🎼"],["Y","Yo-yo","🪀"],["Z","Zebra","🦓"]];
+    let abcIndex=0;function showABC(){const [letter,word,emoji]=abcWords[abcIndex];document.getElementById("abcSceneLetter").textContent=letter+" "+letter.toLowerCase();document.getElementById("abcSceneObject").textContent=emoji;document.getElementById("abcPlay").textContent="▶ "+letter+" is for "+word;}
+    document.getElementById("abcPlay").addEventListener("click",()=>{const [l,w]=abcWords[abcIndex];speakFree(l+". "+l+" is for "+w);});
+    document.getElementById("abcNext").addEventListener("click",()=>{abcIndex=(abcIndex+1)%abcWords.length;showABC();});showABC();
+    const rhyme="Clap your hands, one, two, three! Wiggle like a happy bee! Stomp your feet and touch the sky. Wave hello and wave goodbye!";
+    document.getElementById("rhymePlay").addEventListener("click",()=>speakFree(rhyme));
+    document.getElementById("rhymeStop").addEventListener("click",()=>window.speechSynthesis?.cancel());
+    const storyParts=["Mia found a little teddy sitting under a tree. It looked lonely. “Let's find its owner!” she said.","Mia and Ben asked a friendly rabbit. The rabbit pointed to a little house near the flowers.","A small boy was looking everywhere for his teddy. Mia gave it back with a big smile.","The boy hugged his teddy and thanked his new friends. Mia learned that helping others makes hearts happy!"];
+    let storyIndex=0;function readStory(){document.getElementById("storyText").textContent=storyParts[storyIndex];}
+    document.getElementById("storyNext").addEventListener("click",()=>{storyIndex=(storyIndex+1)%storyParts.length;readStory();});
+    document.getElementById("storyRead").addEventListener("click",()=>speakFree(storyParts[storyIndex]));
+    const games=[{q:"How many?",e:"🍓🍓🍓",a:["2","3","4"],c:"3"},{q:"Find the circle!",e:"🔺 🔵 🟦",a:["Triangle","Circle","Square"],c:"Circle"},{q:"Which is yellow?",e:"🍎 🍌 🍇",a:["Apple","Banana","Grapes"],c:"Banana"},{q:"How many stars?",e:"⭐ ⭐ ⭐ ⭐",a:["3","4","5"],c:"4"}];
+    let gameIndex=0;function renderGame(){const g=games[gameIndex];document.getElementById("gameQuestion").textContent=g.q;document.getElementById("gameObjects").textContent=g.e;document.getElementById("gameFeedback").textContent="Choose your answer!";document.getElementById("gameAnswers").innerHTML=g.a.map(a=>'<button type="button" data-answer="'+a+'">'+a+'</button>').join("");}
+    document.getElementById("gameAnswers").addEventListener("click",e=>{const b=e.target.closest("button[data-answer]");if(!b)return;const g=games[gameIndex];if(b.dataset.answer===g.c){document.getElementById("gameFeedback").textContent="🌟 Wonderful! That's correct!";setTimeout(()=>{gameIndex=(gameIndex+1)%games.length;renderGame();},1200);}else document.getElementById("gameFeedback").textContent="😊 Good try! Have another go!";});
+    renderGame();
+
   </script>
 </body>
 </html>
