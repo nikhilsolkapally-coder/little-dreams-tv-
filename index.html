@@ -4,179 +4,144 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#fff8e9">
-  <meta name="description" content="Little Dreams TV is a happy place for little learners to enjoy ABCs, nursery rhymes, stories, numbers, colors and more.">
+  <meta name="description" content="Little Dreams TV is a happy place for little learners to enjoy ABC learning, nursery rhymes, kids stories, numbers, colors and shapes.">
   <title>Little Dreams TV | Learn • Play • Sing • Grow</title>
   <style>
-    :root{
-      --ink:#293653;--muted:#68758e;--pink:#ff78a8;--yellow:#ffd76e;
-      --blue:#83d9f4;--mint:#a8e8c9;--purple:#c9b7ff;--cream:#fff9ee;
-      --white:#fff;--shadow:0 16px 38px rgba(62,75,111,.12);--radius:26px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    :root{--ink:#293653;--muted:#68758e;--pink:#ff78a8;--yellow:#ffd76e;--blue:#83d9f4;--mint:#a8e8c9;--purple:#c9b7ff;--cream:#fff9ee;--white:#fff;--shadow:0 16px 38px rgba(62,75,111,.12);--radius:26px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}
     body{margin:0;font-family:"Trebuchet MS",system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
-    a{color:inherit;text-decoration:none}
+    a{color:inherit;text-decoration:none}button,input{font:inherit}
     a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #6f78ed;outline-offset:3px}
-    .video-player iframe{max-width:100%}
-    button,input{font:inherit}
     .wrap{width:min(1160px,92%);margin:auto}
-    .topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);box-shadow:0 4px 18px rgba(50,60,90,.07)}
-    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand{display:flex;align-items:center;gap:10px;font-size:1.2rem;font-weight:1000;letter-spacing:-.5px}
-    .brand-mark{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--yellow),var(--pink));font-size:1.6rem;box-shadow:0 7px 18px #ffb8c766}
+    .topbar{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 4px 18px rgba(50,60,90,.07)}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-size:1.16rem;font-weight:1000;letter-spacing:-.5px;white-space:nowrap}
+    .brand-mark{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,var(--yellow),var(--pink));font-size:1.55rem;box-shadow:0 7px 18px #ffb8c766}
     .brand-name span{color:#ee6e9b}
-    .navlinks{display:flex;gap:22px;align-items:center;color:#596681;font-weight:800;font-size:.93rem}
-    .navlinks a:hover{color:#ed6d9b}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 20px;font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(43,52,78,.12);transition:.2s}
-    .btn:hover{transform:translateY(-2px)}
+    .navlinks{display:flex;gap:7px 13px;align-items:center;justify-content:flex-end;flex-wrap:wrap;color:#596681;font-weight:800;font-size:.82rem}
+    .navlinks a{padding:7px 3px;border-bottom:2px solid transparent}.navlinks a:hover{color:#ed6d9b;border-color:#ffb0ca}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 20px;font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(43,52,78,.12);transition:transform .2s,box-shadow .2s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 22px rgba(43,52,78,.15)}
     .pink{background:var(--pink);color:white}.dark{background:var(--ink);color:white}.white{background:white;color:var(--ink)}
     .menu{display:none;background:none;border:0;color:var(--ink);font-size:1.6rem}
-    .hero{overflow:hidden;position:relative;padding:72px 0 76px;background:linear-gradient(120deg,#fff0f5,#fff8df 50%,#eafaff)}
+    .hero{overflow:hidden;position:relative;padding:66px 0 72px;background:linear-gradient(120deg,#fff0f5,#fff8df 50%,#eafaff)}
     .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center}
     .eyebrow{display:inline-flex;align-items:center;gap:8px;background:white;padding:8px 14px;border-radius:999px;color:#d65e8c;font-weight:900;font-size:.83rem;box-shadow:0 5px 18px #b96b8b18}
-    h1{font-size:clamp(2.8rem,6vw,5.1rem);line-height:1.02;letter-spacing:-2.8px;margin:20px 0 16px;font-weight:1000}
-    h1 em{font-style:normal;color:#ed729d}
-    .hero p{font-size:1.1rem;color:var(--muted);max-width:560px;margin:0 0 26px}
-    .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .hero-art{min-height:350px;display:grid;place-items:center;position:relative}
+    h1{font-size:clamp(2.8rem,6vw,5.1rem);line-height:1.02;letter-spacing:-2.8px;margin:20px 0 16px;font-weight:1000}h1 em{font-style:normal;color:#ed729d}
+    .hero p{font-size:1.1rem;color:var(--muted);max-width:560px;margin:0 0 26px}.actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-art{min-height:320px;display:grid;place-items:center;position:relative}
     .rainbow{font-size:clamp(11rem,23vw,17rem);line-height:1;filter:drop-shadow(0 15px 12px #d2a4a455);animation:float 4s ease-in-out infinite}
     .bubble{position:absolute;background:#fff;padding:11px 16px;border-radius:20px;box-shadow:var(--shadow);font-weight:1000}
     .b1{top:8%;left:2%;transform:rotate(-7deg)}.b2{right:0;top:23%;transform:rotate(6deg)}.b3{bottom:7%;left:12%;transform:rotate(4deg)}
     .spark{position:absolute;font-size:2rem;animation:twinkle 2s ease-in-out infinite alternate}.s1{top:6%;right:22%}.s2{bottom:13%;right:8%}.s3{top:48%;left:0}
-    @keyframes float{50%{transform:translateY(-10px)}}@keyframes twinkle{to{transform:scale(1.25) rotate(15deg)}}
-    .section{padding:72px 0}
-    .head{text-align:center;max-width:690px;margin:0 auto 34px}
+    @keyframes float{50%{transform:translateY(-10px)}}@keyframes twinkle{to{transform:scale(1.2) rotate(15deg)}}
+    .section{padding:70px 0}.head{text-align:center;max-width:700px;margin:0 auto 32px}
     .kicker{text-transform:uppercase;letter-spacing:2px;color:#e66f9a;font-size:.78rem;font-weight:1000}
-    h2{font-size:clamp(2rem,4vw,3rem);line-height:1.15;letter-spacing:-1px;margin:8px 0 10px}
-    .head p{margin:0;color:var(--muted)}
+    h2{font-size:clamp(2rem,4vw,3rem);line-height:1.15;letter-spacing:-1px;margin:8px 0 10px}.head p{margin:0;color:var(--muted)}
     .learning-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .learn-card{padding:24px 20px;background:white;border-radius:var(--radius);box-shadow:var(--shadow);transition:.2s;min-height:205px}
-    .learn-card:hover{transform:translateY(-5px)}
-    .iconbox{width:72px;height:72px;border-radius:23px;display:grid;place-items:center;font-size:2.45rem;margin-bottom:14px}
-    .learn-card:nth-child(1) .iconbox{background:#fff0b9}.learn-card:nth-child(2) .iconbox{background:#ffe0eb}.learn-card:nth-child(3) .iconbox{background:#dff6ff}.learn-card:nth-child(4) .iconbox{background:#e2f8e9}
-    .learn-card h3{margin:0 0 5px;font-size:1.15rem}.learn-card p{margin:0;color:var(--muted);font-size:.93rem}
-    .videos{background:#eff8ff}
-    .tools{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
-    .filters{display:flex;gap:9px;flex-wrap:wrap}
-    .chip{border:1px solid #dce4f0;background:#fff;color:#61708a;border-radius:999px;padding:9px 15px;font-weight:900;cursor:pointer}
-    .chip.active{background:#6f78ed;color:white;border-color:#6f78ed}
-    .search{border:1px solid #dce4f0;border-radius:999px;background:white;padding:11px 16px;min-width:min(100%,260px);outline-color:#9b91ff}
-    .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .learn-card,.activity-card,.story,.video-card{background:white;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .learn-card{padding:23px 20px;transition:.2s;min-height:205px}.learn-card:hover,.story:hover,.video-card:hover{transform:translateY(-4px)}
+    .iconbox{width:70px;height:70px;border-radius:22px;display:grid;place-items:center;font-size:2.4rem;margin-bottom:13px;background:#fff0bd}
+    .learn-card:nth-child(2) .iconbox{background:#ffe0eb}.learn-card:nth-child(3) .iconbox{background:#dff6ff}.learn-card:nth-child(4) .iconbox{background:#e2f8e9}
+    .learn-card h3{margin:0 0 5px;font-size:1.12rem}.learn-card p{margin:0;color:var(--muted);font-size:.93rem}
+    .tint-blue{background:#eff8ff}.tint-pink{background:#fff0f5}.tint-lilac{background:#f4f0ff}.tint-yellow{background:#fff8df}
+    .activity-card{padding:25px;text-align:center;max-width:900px;margin:auto}
+    .alphabet{display:grid;grid-template-columns:repeat(13,1fr);gap:8px;margin-top:22px}
+    .letter{aspect-ratio:1;border:0;border-radius:13px;display:grid;place-items:center;font-size:1.12rem;font-weight:1000;background:#fff0bd;color:var(--ink);cursor:pointer;box-shadow:0 5px 14px #47547712;transition:.15s}
+    .letter:nth-child(4n+2){background:#ffe3ed}.letter:nth-child(4n+3){background:#def5ff}.letter:nth-child(4n){background:#e0f7e9}.letter:hover,.letter.active{transform:translateY(-3px);box-shadow:0 8px 16px #47547722;outline:2px solid #ed729d}
+    .activity-result{margin:18px auto 0;padding:13px 18px;border-radius:16px;background:#fff8df;color:#596681;font-weight:800;max-width:460px;min-height:52px}
+    .alphabet-note{text-align:center;color:var(--muted);margin:14px 0 0}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .feature-tile{padding:28px;border-radius:25px;box-shadow:var(--shadow);background:white;text-align:center}
+    .feature-emoji{font-size:3.4rem}.feature-tile h3{margin:7px 0}.feature-tile p{color:var(--muted);margin:0 0 16px}
     .featured-video{display:grid;grid-template-columns:1.35fr .65fr;max-width:1000px;margin:auto;overflow:hidden;background:white;border-radius:26px;box-shadow:var(--shadow)}
-    .video-player{aspect-ratio:16/9;background:#293653}
-    .video-player iframe{display:block;width:100%;height:100%;border:0}
-    .video-local-fallback{display:flex;width:100%;height:100%;min-height:200px;aspect-ratio:16/9;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;background:radial-gradient(circle at 72% 50%,#554172 0,#293653 58%);color:white;text-align:center;text-decoration:none}
-    .video-local-fallback strong{font-size:1.35rem}
-    .video-local-fallback small{color:#e0d8ef;font-size:.95rem;font-weight:600;letter-spacing:normal;text-transform:none}
-    .video-details{display:flex;flex-direction:column;justify-content:center;padding:26px}
-    .video-details small{font-weight:900;color:#e36f98;text-transform:uppercase;letter-spacing:1px}
-    .video-details h3{margin:7px 0 10px;font-size:1.2rem;line-height:1.35}
-    .video-details p{margin:0 0 16px;color:var(--muted);font-size:.92rem}
-    .video-details a{color:#e36f98;font-weight:900;text-underline-offset:3px}
-    .video-card{background:white;border-radius:23px;overflow:hidden;box-shadow:var(--shadow);transition:.2s}
-    .video-card:hover{transform:translateY(-4px)}
-    .video-thumb{height:178px;display:grid;place-items:center;position:relative;font-size:4.2rem}
-    .video-card:nth-child(4n+1) .video-thumb{background:linear-gradient(135deg,#ffe49b,#ffb9c9)}
-    .video-card:nth-child(4n+2) .video-thumb{background:linear-gradient(135deg,#b8edff,#c9b7ff)}
-    .video-card:nth-child(4n+3) .video-thumb{background:linear-gradient(135deg,#c9f3d8,#fff0a9)}
-    .video-card:nth-child(4n) .video-thumb{background:linear-gradient(135deg,#ffd3e5,#d9d0ff)}
-    .play{position:absolute;right:15px;bottom:14px;width:43px;height:43px;border-radius:50%;background:white;color:#ee729e;display:grid;place-items:center;font-size:1.1rem;box-shadow:0 5px 14px #26324b20}
-    .video-copy{padding:17px 18px 20px}.video-copy small{font-weight:900;color:#e36f98;text-transform:uppercase;letter-spacing:1px}.video-copy h3{margin:5px 0;font-size:1.12rem}.video-copy p{margin:0;color:var(--muted);font-size:.92rem}
-    .empty{grid-column:1/-1;text-align:center;padding:28px;background:white;border-radius:20px;color:var(--muted)}
-    .alphabet{display:grid;grid-template-columns:repeat(13,1fr);gap:8px;margin-top:26px}
-    .letter{aspect-ratio:1;border-radius:14px;display:grid;place-items:center;font-size:1.2rem;font-weight:1000;background:white;box-shadow:0 5px 14px #47547712}
-    .letter:nth-child(4n+1){background:#fff0bd}.letter:nth-child(4n+2){background:#ffe3ed}.letter:nth-child(4n+3){background:#def5ff}.letter:nth-child(4n){background:#e0f7e9}
-    .alphabet-note{text-align:center;color:var(--muted);margin-top:18px}
-    .stories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .story{background:white;border-radius:23px;overflow:hidden;box-shadow:var(--shadow)}
-    .story-art{height:155px;display:grid;place-items:center;font-size:4.5rem}
-    .story:nth-child(1) .story-art{background:#ffedbd}.story:nth-child(2) .story-art{background:#e4ddff}.story:nth-child(3) .story-art{background:#d9f5e7}
+    .video-player{aspect-ratio:16/9;background:#293653}.video-player iframe{display:block;width:100%;height:100%;border:0;max-width:100%}
+    .video-details{display:flex;flex-direction:column;justify-content:center;padding:26px}.video-details small,.video-copy small{font-weight:900;color:#e36f98;text-transform:uppercase;letter-spacing:1px}
+    .video-details h3{margin:7px 0 10px;font-size:1.2rem;line-height:1.35}.video-details p{margin:0 0 16px;color:var(--muted);font-size:.92rem}.video-details a{color:#e36f98;font-weight:900;text-underline-offset:3px}
+    .tools{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center;margin:26px 0 18px}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}.chip{border:1px solid #dce4f0;background:#fff;color:#61708a;border-radius:999px;padding:9px 14px;font-weight:900;cursor:pointer}
+    .chip.active{background:#6f78ed;color:white;border-color:#6f78ed}.search{border:1px solid #dce4f0;border-radius:999px;background:white;padding:11px 16px;min-width:min(100%,250px)}
+    .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.video-card{transition:.2s}
+    .video-thumb{height:155px;display:grid;place-items:center;position:relative;font-size:4rem;background:linear-gradient(135deg,#ffe49b,#ffb9c9)}
+    .video-card:nth-child(3n+2) .video-thumb{background:linear-gradient(135deg,#b8edff,#c9b7ff)}.video-card:nth-child(3n) .video-thumb{background:linear-gradient(135deg,#c9f3d8,#fff0a9)}
+    .video-copy{padding:16px 18px 19px}.video-copy h3{margin:5px 0;font-size:1.08rem}.video-copy p{margin:0 0 10px;color:var(--muted);font-size:.92rem}
+    .text-link{font-weight:900;color:#df6995}.empty{grid-column:1/-1;text-align:center;padding:25px;background:white;border-radius:18px;color:var(--muted)}
+    .stories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.story{transition:.2s}.story-art{height:150px;display:grid;place-items:center;font-size:4.4rem;background:#ffedbd}
+    .story:nth-child(2) .story-art{background:#e4ddff}.story:nth-child(3) .story-art{background:#d9f5e7}
     .story-copy{padding:18px}.story-copy h3{margin:0 0 5px}.story-copy p{margin:0;color:var(--muted);font-size:.93rem}
-    .parent{background:linear-gradient(120deg,#fff0f5,#f2efff)}
-    .parent-box{max-width:850px;margin:auto;text-align:center;background:white;padding:36px;border-radius:30px;box-shadow:var(--shadow)}
-    .parent-box .heart{font-size:3rem}.parent-box p{color:var(--muted);max-width:700px;margin:10px auto 22px}
-    .cta{padding:65px 0;background:linear-gradient(110deg,#ff8db1,#ffc86d);text-align:center;color:white}
-    .cta h2{margin:0 0 10px}.cta p{margin:0 auto 22px;max-width:600px;color:#fff9}
-    footer{background:#293653;color:white;padding:36px 0 20px}
-    .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.foot p{color:#d0d8e8;margin:6px 0 0}
-    .footlinks{display:flex;gap:18px;flex-wrap:wrap;font-weight:800;color:#e6ebf5;font-size:.9rem}
+    .number-display{font-size:4rem;font-weight:1000;color:#ed729d;margin:4px 0}.number-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    .color-options{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:18px 0}.color-dot{width:62px;height:62px;border:4px solid white;border-radius:50%;box-shadow:0 4px 14px #29365320;cursor:pointer}.color-dot[aria-pressed=true]{outline:3px solid var(--ink);outline-offset:3px}
+    .shape-row{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:20px 0}.shape{width:66px;height:66px;display:grid;place-items:center;font-size:2.8rem}
+    .parent-box{max-width:880px;margin:auto;text-align:center;background:white;padding:36px;border-radius:30px;box-shadow:var(--shadow)}
+    .parent-box .heart{font-size:3rem}.parent-box p{color:var(--muted);max-width:720px;margin:10px auto 22px}
+    .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:850px;margin:auto}
+    .contact-card{background:white;padding:24px;border-radius:22px;box-shadow:var(--shadow);text-align:center}.contact-card .iconbox{margin:0 auto 12px}
+    .cta{padding:62px 0;background:linear-gradient(110deg,#ff8db1,#ffc86d);text-align:center;color:white}.cta h2{margin:0 0 10px}.cta p{margin:0 auto 22px;max-width:600px;color:#fff}
+    footer{background:#293653;color:white;padding:36px 0 20px}.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+    .foot p{color:#d0d8e8;margin:6px 0 0}.footlinks{display:flex;gap:15px;flex-wrap:wrap;font-weight:800;color:#e6ebf5;font-size:.9rem}
     .copyright{text-align:center;color:#b8c3d7;border-top:1px solid #ffffff25;margin-top:25px;padding-top:16px;font-size:.82rem}
-    @media(max-width:850px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:white;padding:18px 5%;box-shadow:0 12px 18px #26324b12;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu{display:block}.nav>.btn{display:none}.hero-grid{grid-template-columns:1fr;text-align:center}.hero p{margin-left:auto;margin-right:auto}.actions{justify-content:center}.hero-art{min-height:280px}.learning-grid{grid-template-columns:repeat(2,1fr)}.featured-video{grid-template-columns:1fr}.alphabet{grid-template-columns:repeat(7,1fr)}}
-    @media(max-width:560px){.hero{padding:52px 0}.hero-art{min-height:230px}.learning-grid,.stories{grid-template-columns:1fr}.section{padding:55px 0}.alphabet{gap:6px}.letter{font-size:1rem;border-radius:9px}.parent-box{padding:25px 18px}.foot{flex-direction:column;align-items:flex-start}.video-details{padding:21px}}
+    @media(max-width:1050px){.navlinks{gap:4px 9px;font-size:.77rem}.nav>.btn{display:none}}
+    @media(max-width:850px){.nav{min-height:70px}.navlinks{display:none;position:absolute;top:70px;left:0;right:0;background:white;padding:18px 5%;box-shadow:0 12px 18px #26324b12;flex-direction:column;align-items:stretch;gap:4px}.navlinks.open{display:flex}.navlinks a{padding:10px 4px}.menu{display:block}.hero-grid{grid-template-columns:1fr;text-align:center}.hero p{margin-left:auto;margin-right:auto}.actions{justify-content:center}.hero-art{min-height:260px}.learning-grid{grid-template-columns:repeat(2,1fr)}.featured-video{grid-template-columns:1fr}.alphabet{grid-template-columns:repeat(7,1fr)}.video-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.hero{padding:48px 0}.hero-art{min-height:220px}.learning-grid,.stories,.two-col,.contact-grid{grid-template-columns:1fr}.section{padding:52px 0}.alphabet{gap:6px}.letter{font-size:.95rem;border-radius:9px}.parent-box{padding:25px 18px}.foot{flex-direction:column;align-items:flex-start}.video-details{padding:21px}.video-grid{grid-template-columns:1fr}.activity-card{padding:20px 13px}.color-dot{width:52px;height:52px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
   </style>
 </head>
 <body>
 <header class="topbar">
   <div class="wrap nav">
-    <a class="brand" href="#home"><span class="brand-mark">🌈</span><span class="brand-name">Little <span>Dreams</span> TV</span></a>
+    <a class="brand" href="#home" aria-label="Little Dreams TV home"><span class="brand-mark">🌈</span><span class="brand-name">Little <span>Dreams</span> TV</span></a>
     <nav class="navlinks" id="navlinks" aria-label="Main navigation">
-      <a href="#learn">Learning</a><a href="#videos">Videos</a><a href="#alphabet">ABC</a><a href="#stories">Stories</a><a href="#about">About</a>
+      <a href="#home">Home</a><a href="#abc">ABC Learning</a><a href="#rhymes">Nursery Rhymes</a><a href="#stories">Kids Stories</a><a href="#numbers">Numbers</a><a href="#colors">Colors & Shapes</a><a href="#videos">Video Gallery</a><a href="#parents">Parents Corner</a><a href="#contact">Contact</a>
     </nav>
     <a class="btn pink" href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">▶ Subscribe</a>
     <button class="menu" id="menu" aria-label="Open navigation" aria-controls="navlinks" aria-expanded="false">☰</button>
   </div>
 </header>
-
 <main>
   <section class="hero" id="home">
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow">✨ A happy place for little learners</span>
         <h1>Big dreams begin with <em>little</em> steps!</h1>
-        <p>Welcome to a colorful world of learning and fun. Sing cheerful nursery rhymes, explore ABCs, count numbers and enjoy lovely stories with Little Dreams TV.</p>
-        <div class="actions">
-          <a class="btn pink" href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">▶ Watch on YouTube</a>
-          <a class="btn white" href="#learn">Explore & learn ↓</a>
-        </div>
+        <p>Welcome to a colorful world of learning and fun. Explore ABCs, sing cheerful nursery rhymes, count numbers, discover colors and enjoy lovely stories with Little Dreams TV.</p>
+        <div class="actions"><a class="btn pink" href="#videos">▶ Explore videos</a><a class="btn white" href="#abc">Start learning ↓</a></div>
       </div>
       <div class="hero-art" aria-label="A cheerful rainbow with playful learning labels">
-        <span class="spark s1">✨</span><span class="spark s2">⭐</span><span class="spark s3">💫</span>
-        <div class="rainbow">🌈</div>
+        <span class="spark s1">✨</span><span class="spark s2">⭐</span><span class="spark s3">💫</span><div class="rainbow">🌈</div>
         <div class="bubble b1">🔤 ABC time!</div><div class="bubble b2">🎵 Sing along!</div><div class="bubble b3">🧸 Let's play!</div>
       </div>
     </div>
   </section>
-
-  <section class="section" id="learn">
+  <section class="section" id="discover">
     <div class="wrap">
       <div class="head"><div class="kicker">Learn through play</div><h2>What shall we discover today?</h2><p>Little lessons and big smiles for curious minds.</p></div>
       <div class="learning-grid">
-        <article class="learn-card"><div class="iconbox">🔤</div><h3>ABC Learning</h3><p>Discover letters A to Z, their sounds and simple words.</p></article>
-        <article class="learn-card"><div class="iconbox">🎶</div><h3>Nursery Rhymes</h3><p>Clap, dance and sing along to fun children's songs.</p></article>
-        <article class="learn-card"><div class="iconbox">📚</div><h3>Kids Stories</h3><p>Enjoy gentle adventures about friendship, kindness and imagination.</p></article>
-        <article class="learn-card"><div class="iconbox">🔢</div><h3>Numbers & Colors</h3><p>Practice counting and explore shapes and colors.</p></article>
+        <a class="learn-card" href="#abc"><div class="iconbox">🔤</div><h3>ABC Learning</h3><p>Discover letters A to Z and simple words.</p></a>
+        <a class="learn-card" href="#rhymes"><div class="iconbox">🎶</div><h3>Nursery Rhymes</h3><p>Clap, dance and sing along to fun songs.</p></a>
+        <a class="learn-card" href="#stories"><div class="iconbox">📚</div><h3>Kids Stories</h3><p>Enjoy gentle adventures about kindness and friendship.</p></a>
+        <a class="learn-card" href="#numbers"><div class="iconbox">🔢</div><h3>Numbers & Colors</h3><p>Practice counting and explore shapes and colors.</p></a>
       </div>
     </div>
   </section>
-
-  <section class="section videos" id="videos">
+  <section class="section tint-yellow" id="abc">
     <div class="wrap">
-      <div class="head"><div class="kicker">Watch • sing • learn</div><h2>Watch our latest video</h2><p>Enjoy a featured Little Dreams TV video right here on the website.</p></div>
-      <article class="featured-video">
-        <div class="video-player">
-          <iframe src="https://www.youtube-nocookie.com/embed/HJvIdoUnd2s" title="Watch Learn the Alphabet A to Z, a fun ABC learning video for kids" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-        <div class="video-details">
-          <small>Featured ABC Learning</small>
-          <h3>Learn the Alphabet A to Z | Fun ABC Learning for Kids</h3>
-          <p>Watch the video here or open it on YouTube.</p>
-          <a href="https://www.youtube.com/watch?v=HJvIdoUnd2s" target="_blank" rel="noopener">Watch on YouTube ↗</a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" id="alphabet">
-    <div class="wrap">
-      <div class="head"><div class="kicker">Alphabet corner</div><h2>Let's say our ABCs!</h2><p>Look at each letter and say it aloud. What word begins with that letter?</p></div>
-      <div class="alphabet" aria-label="Letters A to Z">
-        <span class="letter">A</span><span class="letter">B</span><span class="letter">C</span><span class="letter">D</span><span class="letter">E</span><span class="letter">F</span><span class="letter">G</span><span class="letter">H</span><span class="letter">I</span><span class="letter">J</span><span class="letter">K</span><span class="letter">L</span><span class="letter">M</span><span class="letter">N</span><span class="letter">O</span><span class="letter">P</span><span class="letter">Q</span><span class="letter">R</span><span class="letter">S</span><span class="letter">T</span><span class="letter">U</span><span class="letter">V</span><span class="letter">W</span><span class="letter">X</span><span class="letter">Y</span><span class="letter">Z</span>
+      <div class="head"><div class="kicker">Alphabet corner</div><h2>Let's say our ABCs!</h2><p>Tap a letter to discover a word that begins with it.</p></div>
+      <div class="activity-card">
+        <div class="alphabet" id="alphabet" aria-label="Interactive letters A to Z"></div>
+        <div class="activity-result" id="letterResult" aria-live="polite">🍎 A is for Apple. Tap any letter to learn!</div>
+        <p class="alphabet-note">Say the letter aloud, then say the word. Learning is fun!</p>
       </div>
-      <p class="alphabet-note">🍎 A is for Apple &nbsp; ⚽ B is for Ball &nbsp; 🐱 C is for Cat</p>
     </div>
   </section>
-
+  <section class="section tint-pink" id="rhymes">
+    <div class="wrap">
+      <div class="head"><div class="kicker">Music & movement</div><h2>Nursery rhymes sing-along</h2><p>Let's clap our hands, move our feet and sing together!</p></div>
+      <div class="two-col">
+        <article class="feature-tile"><div class="feature-emoji">⭐🎵</div><h3>Classic nursery rhymes</h3><p>Find cheerful sing-along videos and familiar childhood favorites on our channel.</p><a class="btn pink" href="https://www.youtube.com/@LittleDreamsTV-v8j/search?query=nursery%20rhymes" target="_blank" rel="noopener">Explore rhymes ↗</a></article>
+        <article class="feature-tile"><div class="feature-emoji">🐮🎶</div><h3>Animal songs</h3><p>Meet friendly farm and jungle animals through playful songs and sounds.</p><a class="btn white" href="https://www.youtube.com/@LittleDreamsTV-v8j/search?query=animal%20songs" target="_blank" rel="noopener">Explore animal songs ↗</a></article>
+      </div>
+    </div>
+  </section>
   <section class="section" id="stories">
     <div class="wrap">
       <div class="head"><div class="kicker">Little story time</div><h2>Stories full of wonder</h2><p>Imagine, explore and learn something kind along the way.</p></div>
@@ -185,47 +150,104 @@
         <article class="story"><div class="story-art">🚀🌙</div><div class="story-copy"><h3>Dreamy Space Trip</h3><p>Imagine flying among the stars on a gentle adventure through space.</p></div></article>
         <article class="story"><div class="story-art">🐰🌷</div><div class="story-copy"><h3>The Kind Little Bunny</h3><p>A sweet story about sharing, caring and being a good friend.</p></div></article>
       </div>
+      <p style="text-align:center;margin-top:22px"><a class="btn white" href="https://www.youtube.com/@LittleDreamsTV-v8j/search?query=kids%20stories" target="_blank" rel="noopener">Watch story videos ↗</a></p>
     </div>
   </section>
-
-  <section class="section" id="about" style="background:linear-gradient(120deg,#fff0f5,#f2efff)">
+  <section class="section tint-blue" id="numbers">
     <div class="wrap">
-      <div class="parent-box"><div class="heart">💛</div><div class="kicker">For parents & families</div><h2>Growing curious, kind little minds</h2><p>Little Dreams TV is a cheerful place for children and families to explore early learning through songs, stories and simple educational topics. Parents and caregivers are encouraged to watch with young children and choose age-appropriate content together.</p><a class="btn dark" href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">Visit our YouTube channel ↗</a></div>
+      <div class="head"><div class="kicker">Count with us</div><h2>Numbers are everywhere!</h2><p>Press the buttons and count from 1 to 20.</p></div>
+      <div class="activity-card">
+        <div class="number-display" id="numberDisplay" aria-live="polite">1</div>
+        <div id="numberWords" style="font-weight:900;color:#68758e;margin-bottom:17px">ONE • 🌟</div>
+        <div class="number-actions"><button class="btn pink" id="nextNumber" type="button">Next number →</button><button class="btn white" id="resetNumber" type="button">Start again ↺</button></div>
+      </div>
     </div>
   </section>
-
-  <section class="cta">
-    <div class="wrap"><h2>Come dream, learn and sing with us! 🌈</h2><p>Join our happy little learning family. Subscribe to Little Dreams TV and let the fun begin.</p><a class="btn white" href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">▶ Subscribe on YouTube</a></div>
+  <section class="section tint-lilac" id="colors">
+    <div class="wrap">
+      <div class="head"><div class="kicker">Colorful discoveries</div><h2>Colors & shapes</h2><p>Tap a color to see its name. Can you spot these colors around you?</p></div>
+      <div class="activity-card">
+        <div class="color-options" aria-label="Choose a color">
+          <button class="color-dot" style="background:#ff6f91" data-color="Pink" aria-label="Pink" aria-pressed="false"></button>
+          <button class="color-dot" style="background:#ffd34e" data-color="Yellow" aria-label="Yellow" aria-pressed="false"></button>
+          <button class="color-dot" style="background:#63c8ef" data-color="Blue" aria-label="Blue" aria-pressed="false"></button>
+          <button class="color-dot" style="background:#72cf9a" data-color="Green" aria-label="Green" aria-pressed="false"></button>
+          <button class="color-dot" style="background:#a88bea" data-color="Purple" aria-label="Purple" aria-pressed="false"></button>
+          <button class="color-dot" style="background:#ff9b45" data-color="Orange" aria-label="Orange" aria-pressed="false"></button>
+        </div>
+        <div class="activity-result" id="colorResult" aria-live="polite">🌈 Choose a color above!</div>
+        <h3 style="margin-top:28px">Meet the shapes</h3>
+        <div class="shape-row"><span class="shape" aria-label="Circle">🔵</span><span class="shape" aria-label="Square">🟨</span><span class="shape" aria-label="Triangle">🔺</span><span class="shape" aria-label="Star">⭐</span><span class="shape" aria-label="Heart">💗</span></div>
+        <p class="alphabet-note">Circle • Square • Triangle • Star • Heart</p>
+      </div>
+    </div>
   </section>
+  <section class="section tint-blue" id="videos">
+    <div class="wrap">
+      <div class="head"><div class="kicker">Watch • sing • learn</div><h2>Little Dreams TV video gallery</h2><p>Choose a learning topic to explore videos on our YouTube channel.</p></div>
+      <article class="featured-video">
+        <div class="video-player"><iframe src="https://www.youtube-nocookie.com/embed/HJvIdoUnd2s" title="Watch Learn the Alphabet A to Z, a fun ABC learning video for kids" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-details"><small>Featured ABC Learning</small><h3>Learn the Alphabet A to Z | Fun ABC Learning for Kids</h3><p>Watch this featured video here or explore more videos on our channel.</p><a href="https://www.youtube.com/watch?v=HJvIdoUnd2s" target="_blank" rel="noopener">Watch on YouTube ↗</a></div>
+      </article>
+      <div class="tools">
+        <div class="filters" aria-label="Filter video topics">
+          <button class="chip active" data-filter="all" type="button">All topics</button><button class="chip" data-filter="abc" type="button">ABC</button><button class="chip" data-filter="rhymes" type="button">Rhymes</button><button class="chip" data-filter="stories" type="button">Stories</button><button class="chip" data-filter="numbers" type="button">Numbers</button>
+        </div>
+        <input class="search" id="videoSearch" type="search" placeholder="Search a topic..." aria-label="Search video topics">
+      </div>
+      <div class="video-grid" id="videoGrid">
+        <article class="video-card" data-category="abc" data-title="alphabet abc letters learning"><div class="video-thumb">🔤</div><div class="video-copy"><small>ABC Learning</small><h3>Alphabet adventures</h3><p>Letters, sounds and first words.</p><a class="text-link" href="https://www.youtube.com/@LittleDreamsTV-v8j/search?query=ABC" target="_blank" rel="noopener">Find ABC videos ↗</a></div></article>
+        <article class="video-card" data-category="rhymes" data-title="nursery rhymes music songs"><div class="video-thumb">🎵</div><div class="video-copy"><small>Nursery Rhymes</small><h3>Sing-along time</h3><p>Music, movement and happy songs.</p><a class="text-link" href="https://www.youtube.com/@LittleDreamsTV-v8j/search?query=nursery%20rhymes" target="_blank" rel="noopener">Find rhymes ↗</a></div></article>
+        <article class="video-card" data-category="stories" data-title="kids stories bedtime tales"><div class="video-thumb">📖</div><div class="video-copy"><small>Kids Stories</small><h3>Storybook corner</h3><p>Gentle tales and imagination.</p><a class="text-link" href="https://www.youtube.com/@LittleDreamsTV-v8j/search?query=kids%20stories" target="_blank" rel="noopener">Find stories ↗</a></div></article>
+        <article class="video-card" data-category="numbers" data-title="numbers counting math"><div class="video-thumb">🔢</div><div class="video-copy"><small>Numbers</small><h3>Let's count together</h3><p>Numbers, counting and early math.</p><a class="text-link" href="https://www.youtube.com/@LittleDreamsTV-v8j/search?query=counting" target="_blank" rel="noopener">Find counting videos ↗</a></div></article>
+        <article class="video-card" data-category="abc" data-title="colors shapes preschool learning"><div class="video-thumb">🎨</div><div class="video-copy"><small>Colors & Shapes</small><h3>Colorful discoveries</h3><p>Explore colors and everyday shapes.</p><a class="text-link" href="https://www.youtube.com/@LittleDreamsTV-v8j/search?query=colors%20shapes" target="_blank" rel="noopener">Find learning videos ↗</a></div></article>
+        <article class="video-card" data-category="rhymes" data-title="animal songs farm jungle"><div class="video-thumb">🐮</div><div class="video-copy"><small>Animal Songs</small><h3>Animal friends</h3><p>Meet animals and learn their sounds.</p><a class="text-link" href="https://www.youtube.com/@LittleDreamsTV-v8j/search?query=animal%20songs" target="_blank" rel="noopener">Find animal songs ↗</a></div></article>
+        <p class="empty" id="noVideos" hidden>No matching topics found. Try another search.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="parents">
+    <div class="wrap">
+      <div class="parent-box"><div class="heart">💛</div><div class="kicker">For parents & families</div><h2>Growing curious, kind little minds</h2><p>Little Dreams TV is a cheerful place for children and families to explore early learning through songs, stories and simple educational topics. Parents and caregivers are encouraged to watch with young children, choose age-appropriate content together and enjoy learning side by side.</p><a class="btn dark" href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">Visit our YouTube channel ↗</a></div>
+    </div>
+  </section>
+  <section class="section tint-pink" id="contact">
+    <div class="wrap">
+      <div class="head"><div class="kicker">Say hello</div><h2>Contact Little Dreams TV</h2><p>We'd love to have you as part of our little learning family.</p></div>
+      <div class="contact-grid">
+        <div class="contact-card"><div class="iconbox">▶️</div><h3>Visit our channel</h3><p>Watch our videos and subscribe for more learning fun.</p><a class="text-link" href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">Little Dreams TV on YouTube ↗</a></div>
+        <div class="contact-card"><div class="iconbox" style="background:#e2f8e9">💬</div><h3>Join the conversation</h3><p>Share your thoughts on our videos through YouTube comments.</p><a class="text-link" href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">Connect with us ↗</a></div>
+      </div>
+    </div>
+  </section>
+  <section class="cta"><div class="wrap"><h2>Come dream, learn and sing with us! 🌈</h2><p>Join our happy little learning family. Subscribe to Little Dreams TV and let the fun begin.</p><a class="btn white" href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">▶ Subscribe on YouTube</a></div></section>
 </main>
-
 <footer>
-  <div class="wrap">
-    <div class="foot">
-      <div><a class="brand" href="#home"><span class="brand-mark">🌈</span><span>Little Dreams TV</span></a><p>Learn • Play • Sing • Grow</p></div>
-      <div class="footlinks"><a href="#home">Home</a><a href="#learn">Learning</a><a href="#videos">Videos</a><a href="#stories">Stories</a><a href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">YouTube ↗</a></div>
-    </div>
-    <div class="copyright">© <span id="year"></span> Little Dreams TV. Made with 💖 for little learners.</div>
-  </div>
+  <div class="wrap"><div class="foot"><div><a class="brand" href="#home"><span class="brand-mark">🌈</span><span>Little Dreams TV</span></a><p>Learn • Play • Sing • Grow</p></div><div class="footlinks"><a href="#home">Home</a><a href="#abc">ABC</a><a href="#rhymes">Rhymes</a><a href="#stories">Stories</a><a href="#videos">Videos</a><a href="#contact">Contact</a><a href="https://www.youtube.com/@LittleDreamsTV-v8j" target="_blank" rel="noopener">YouTube ↗</a></div></div><div class="copyright">© <span id="year"></span> Little Dreams TV. Made with 💖 for little learners.</div></div>
 </footer>
-
 <script>
-  if (location.protocol === "file:") {
-    document.querySelector(".video-player").innerHTML = '<a class="video-local-fallback" href="https://www.youtube.com/watch?v=HJvIdoUnd2s" target="_blank" rel="noopener"><strong>Video preview</strong><small>Embedded playback is available on the published website.</small><span>Watch on YouTube ↗</span></a>';
-  }
-  // Featured video is selected manually; a YouTube Data API integration can automate this later.
-  const menu = document.getElementById("menu");
-  const nav = document.getElementById("navlinks");
-  menu.addEventListener("click", () => {
-    const open = nav.classList.toggle("open");
-    menu.setAttribute("aria-expanded", String(open));
-    menu.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
-    menu.textContent = open ? "✕" : "☰";
-  });
-  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
-    nav.classList.remove("open"); menu.setAttribute("aria-expanded","false"); menu.setAttribute("aria-label","Open navigation"); menu.textContent="☰";
-  }));
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const menu=document.getElementById("menu"),nav=document.getElementById("navlinks");
+  menu.addEventListener("click",()=>{const open=nav.classList.toggle("open");menu.setAttribute("aria-expanded",String(open));menu.setAttribute("aria-label",open?"Close navigation":"Open navigation");menu.textContent=open?"✕":"☰";});
+  nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false");menu.setAttribute("aria-label","Open navigation");menu.textContent="☰";}));
+  document.getElementById("year").textContent=new Date().getFullYear();
+
+  const words=["Apple","Ball","Cat","Dog","Elephant","Fish","Giraffe","House","Ice cream","Jellyfish","Kite","Lion","Moon","Nest","Orange","Penguin","Queen","Rabbit","Sun","Tiger","Umbrella","Violin","Whale","Xylophone","Yak","Zebra"];
+  const alphabet=document.getElementById("alphabet"),letterResult=document.getElementById("letterResult");
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach((letter,index)=>{const button=document.createElement("button");button.type="button";button.className="letter";button.textContent=letter;button.setAttribute("aria-label","Letter "+letter);button.addEventListener("click",()=>{alphabet.querySelectorAll(".letter").forEach(item=>item.classList.remove("active"));button.classList.add("active");letterResult.textContent=letter+" is for "+words[index]+"!";});alphabet.appendChild(button);});
+  alphabet.firstElementChild.classList.add("active");
+
+  const numberWords=["ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN","ELEVEN","TWELVE","THIRTEEN","FOURTEEN","FIFTEEN","SIXTEEN","SEVENTEEN","EIGHTEEN","NINETEEN","TWENTY"];
+  let count=1;const numberDisplay=document.getElementById("numberDisplay"),numberLabel=document.getElementById("numberWords");
+  function showNumber(){numberDisplay.textContent=count;numberLabel.textContent=numberWords[count-1]+" • "+ "⭐".repeat(Math.min(count,10));}
+  document.getElementById("nextNumber").addEventListener("click",()=>{count=count===20?1:count+1;showNumber();});
+  document.getElementById("resetNumber").addEventListener("click",()=>{count=1;showNumber();});
+
+  document.querySelectorAll(".color-dot").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".color-dot").forEach(dot=>dot.setAttribute("aria-pressed","false"));button.setAttribute("aria-pressed","true");document.getElementById("colorResult").textContent="Wonderful! This color is "+button.dataset.color+"!";}));
+
+  let activeFilter="all";const search=document.getElementById("videoSearch"),cards=[...document.querySelectorAll(".video-card")],noVideos=document.getElementById("noVideos");
+  function filterVideos(){const term=search.value.trim().toLowerCase();let visible=0;cards.forEach(card=>{const matchesCategory=activeFilter==="all"||card.dataset.category===activeFilter;const matchesText=card.dataset.title.includes(term)||card.textContent.toLowerCase().includes(term);const show=matchesCategory&&matchesText;card.hidden=!show;if(show)visible++;});noVideos.hidden=visible!==0;}
+  document.querySelectorAll(".chip").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".chip").forEach(chip=>chip.classList.remove("active"));button.classList.add("active");activeFilter=button.dataset.filter;filterVideos();}));
+  search.addEventListener("input",filterVideos);
 </script>
 </body>
 </html>
