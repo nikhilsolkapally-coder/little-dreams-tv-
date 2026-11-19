@@ -1,4 +1,4 @@
-package tv.littledreamstv.app;
+package tv.littledreams.app;
 
 import android.app.Activity;
 import android.os.Bundle;
