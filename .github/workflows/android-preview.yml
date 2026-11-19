@@ -1,0 +1,52 @@
+name: Build Android preview app
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-android-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get app files
+        uses: actions/checkout@v4
+
+      - name: Prepare Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Prepare Android tools
+        uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+
+      - name: Install Android build platform
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Copy Little Dreams TV into the app
+        run: |
+          mkdir -p android-app/app/src/main/assets/public
+          mkdir -p android-app/app/src/main/res/mipmap-nodpi
+          cp index.html manifest.webmanifest sw.js icon-192.png icon-512.png android-app/app/src/main/assets/public/
+          cp icon-512.png android-app/app/src/main/res/mipmap-nodpi/ic_launcher.png
+
+      - name: Prepare Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.11.1"
+
+      - name: Build installable preview
+        run: gradle --no-daemon -p android-app assembleDebug
+
+      - name: Make APK available for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: little-dreams-tv-android-preview
+          path: android-app/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 14
