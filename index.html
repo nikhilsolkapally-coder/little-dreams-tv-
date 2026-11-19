@@ -2,13 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#fffaf2">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Little Dreams TV">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-  <link rel="apple-touch-icon" href="icon-192.png">
   <meta name="description" content="Little Dreams TV — a joyful place for children to explore ABCs, nursery rhymes, stories, numbers, colours and creative learning.">
   <title>Little Dreams TV — Little learners. Big adventures.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,12 +78,10 @@
 @keyframes notesFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @media(prefers-reduced-motion:reduce){.scene-friend,.scene-letter,.rhythm-notes{animation:none}}
 
-  .install-app-button{border:2px solid #e0d6f6;color:#39216d}.install-app-button[hidden],.offline-notice[hidden]{display:none!important}.offline-notice{position:sticky;top:78px;z-index:49;background:#fff0d5;color:#5c4974;text-align:center;padding:9px 15px;font-size:.82rem;font-weight:800;border-bottom:1px solid #f0dfbd}@media(max-width:560px){.offline-notice{top:70px;font-size:.75rem}}
   </style>
 </head>
 <body>
   <div class="announcement">A little world of wonder for curious minds <span>✦</span> Welcome to Little Dreams TV!</div>
-  <div class="offline-notice" id="offlineNotice" role="status" aria-live="polite" hidden>You are offline. Learning activities still work; videos need an internet connection.</div>
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#home" aria-label="Little Dreams TV home"><span class="brand-icon">🌈</span><span class="brand-copy">Little <span>Dreams</span> TV<small>Learn · Play · Grow</small></span></a>
@@ -109,7 +102,7 @@
           <span class="eyebrow">✦ PLAYFUL LEARNING STARTS HERE</span>
           <h1>Little learners.<br><span class="highlight">Big adventures.</span></h1>
           <p>Come explore a brighter world of letters, music, stories and happy discoveries. Every little step is a big reason to smile.</p>
-          <div class="hero-actions"><a class="button button-primary" href="#discover">Explore the fun <span>→</span></a><a class="button button-light" href="#videos">▶ Watch videos</a><button class="button button-light install-app-button" id="installAppButton" type="button" hidden>📱 Install app</button></div>
+          <div class="hero-actions"><a class="button button-primary" href="#discover">Explore the fun <span>→</span></a><a class="button button-light" href="#videos">▶ Watch videos</a></div>
           <div class="hero-note"><div class="avatar-stack"><span>🧒</span><span>🐻</span><span>⭐</span></div><span>Made for curious little minds and the grown-ups who cheer them on.</span></div>
         </div>
         <div class="hero-visual">
@@ -257,39 +250,6 @@
     document.getElementById("gameAnswers").addEventListener("click",e=>{const b=e.target.closest("button[data-answer]");if(!b)return;const g=games[gameIndex];if(b.dataset.answer===g.c){document.getElementById("gameFeedback").textContent="🌟 Wonderful! That's correct!";setTimeout(()=>{gameIndex=(gameIndex+1)%games.length;renderGame();},1200);}else document.getElementById("gameFeedback").textContent="😊 Good try! Have another go!";});
     renderGame();
 
-  </script>
-  <script>
-    const installButton=document.getElementById("installAppButton");
-    let installPrompt=null;
-    window.addEventListener("beforeinstallprompt",event=>{
-      event.preventDefault();
-      installPrompt=event;
-      installButton.hidden=false;
-    });
-    installButton.addEventListener("click",async()=>{
-      if(!installPrompt)return;
-      installPrompt.prompt();
-      await installPrompt.userChoice;
-      installPrompt=null;
-      installButton.hidden=true;
-    });
-    window.addEventListener("appinstalled",()=>{
-      installButton.hidden=true;
-      installPrompt=null;
-    });
-    if(window.matchMedia("(display-mode: standalone)").matches||navigator.standalone){
-      installButton.hidden=true;
-    }
-    const offlineNotice=document.getElementById("offlineNotice");
-    const updateOfflineNotice=()=>{offlineNotice.hidden=navigator.onLine;};
-    window.addEventListener("online",updateOfflineNotice);
-    window.addEventListener("offline",updateOfflineNotice);
-    updateOfflineNotice();
-    if("serviceWorker" in navigator&&location.protocol!=="file:"){
-      window.addEventListener("load",()=>{
-        navigator.serviceWorker.register("./sw.js").catch(error=>console.warn("App offline setup could not start.",error));
-      });
-    }
   </script>
 </body>
 </html>
