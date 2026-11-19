@@ -36,31 +36,14 @@ self.addEventListener("fetch", event => {
 
   if (request.mode === "navigate") {
     event.respondWith(
-      fetch(request)
-        .then(response => {
-          if (response.ok) {
-            const copy = response.clone();
-            event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.put(request, copy)));
-          }
-          return response;
-        })
-        .catch(async () => {
-          return await caches.match(request) || await caches.match(new URL("index.html", APP_SCOPE).href);
-        })
+      fetch(request).catch(async () => {
+        return await caches.match(request) || await caches.match(new URL("index.html", APP_SCOPE).href);
+      })
     );
     return;
   }
 
   event.respondWith(
-    caches.match(request).then(cached => {
-      if (cached) return cached;
-      return fetch(request).then(response => {
-        if (response.ok) {
-          const copy = response.clone();
-          event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.put(request, copy)));
-        }
-        return response;
-      });
-    })
+    caches.match(request).then(cached => cached || fetch(request))
   );
 });
